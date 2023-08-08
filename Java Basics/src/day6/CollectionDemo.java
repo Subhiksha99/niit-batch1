@@ -1,10 +1,12 @@
 package day6;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Stack;
 import java.util.Vector;
 
 /*
@@ -19,16 +21,26 @@ import java.util.Vector;
  *      for(), Iterator,ListIterator, forEach(), nextgen for loop,
  *      enumerator()
  *    List(I) - ListIterator, Iterator, for
+ *       duplicate values allowed
+ *       insertion order maintained
+ *       more than one null value can be stored
+ *       Heterogeneous elements allowed to store
+ *       
  *     ArrayList(C) - 1.2v
  *       - Underlying data structure Array.
  *       - frequent operations are read
  *       - Heterogeneous elements
+ *       - No Thread safety
  *       
  *     LinkedList(C) -1.2v
- *     Vector(C) - enumerator - 1.0v
- *       Stack(C) - 1.0v
+ *       - uses doubly linked linked list - DS
+ *       - write/modify/remove
+ *       - No Thread safety
+ *     
+ *     Vector(C) - enumerator - 1.0v - Thread safety
+ *       Stack(C) - 1.0v - LIFO
  *       
- *   Queue(I)- Iterator, for
+ *   Queue(I)- Iterator, for - FIFO - email
  *     PriorityQueue(C)
  *     DeQue(I)
  *       ArrayDeQue(C)
@@ -38,6 +50,8 @@ import java.util.Vector;
  *     LinkedHashSet(C)
  *     SortedSet(I)
  *        TreeSet(C)
+ *        
+ *     Comparable / Comparator / hashcode() / equals()
  *   
  * Collections(C) - provides set of methods to work with collection objects
  * 
@@ -80,10 +94,7 @@ public class CollectionDemo {
 //		//arrList2.trimToSize();
 		
 		/*
-		 * duplicate values allowed
-		 * insertion order maintained
-		 * more than one null value can be stored
-		 * Heterogeneous elements allowed to store
+		
 		 * 
 		 */
 		// write
@@ -131,7 +142,7 @@ public class CollectionDemo {
 		for(int i=0; i<arrList1.size(); i++) {
 			if(arrList1.get(i) instanceof String) {
 				//System.out.println(arrList1.get(i).toString().toUpperCase());
-				System.out.println(((String)arrList1.get(i)).toUpperCase());
+				System.out.println(String.valueOf(arrList1.get(i)).toUpperCase());
 			}
 		}
 		
@@ -145,6 +156,12 @@ public class CollectionDemo {
 		for(String str :strList) {
 			System.out.print(str.toUpperCase()+" "); // [AA, BB, CC]
 		}
+
+		System.out.println();
+		System.out.println("#######");
+		// update
+		strList.set(0, "aaaa");
+		System.out.println(strList);
 		
 		// contains, addAll, remove
 		System.out.println();
@@ -164,9 +181,83 @@ public class CollectionDemo {
 		// contains() -search
 		System.out.println(arrList1.contains("cc")); // false
 		
+		System.out.println();
+		Employee emp1 = new Employee(10001, "Shiv");
+		Employee emp2 = new Employee(10002, "Sam");
+		Employee emp3 = new Employee(10003, "Rahul");
+		System.out.println(emp1); //day6.Employee@3b6eb2ec - without toString() method in Employee class
+		                       ; //Employee [empId=10001, name=Shiv] - with toString() method in Employee class
+
+		                    
+		// Object[] objArr = {emp1, emp2, emp3, "Hello"};
+		
+		List<Employee> linkedLst = new LinkedList();
+		linkedLst.add(emp1);
+		linkedLst.add(emp2);
+		linkedLst.add(emp3);
+		
+		for(Employee emp:linkedLst) {
+			System.out.println(emp.getName());
+		}
+		
+		// Vector
+		List<String> v1 = new Vector();
+		Vector<String> v2 = new Vector();
+		
+		v2.add("One");
+		v2.add("Two");
+		
+		
+		System.out.println("#####Vector#######");
+		Enumeration<String> en = v2.elements();
+		while(en.hasMoreElements()) {
+			System.out.println(en.nextElement());
+		}
+		
+		
+		// methods
+
+		// Stack
+		Stack<Integer> s1 = new Stack();
+		List<Integer> s2 = new Stack();
+		
+		s1.add(10);
+		s1.add(20);
+		s1.add(30);
+		s1.add(10);
+		s1.add(null);
+		s1.add(null);
+		
+		s1.push(1000);
+		s1.push(2000);
+		
+		System.out.println(s1);
+		
+		s1.pop();
+		
+		System.out.println(s1); //[10, 20, 30, 10, null, null, 1000]
+		System.out.println(s1.peek()); // 1000
+		System.out.println(s1.pop());
+		System.out.println(s1); //[10, 20, 30, 10, null, null]
+				
+		
+				
+		
+		
 		
 		
 
+		
+		
+		
+		
+		
+		
+		
+		
+
+		                       
+	
 	}
 
 }

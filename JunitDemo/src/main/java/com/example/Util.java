@@ -1,7 +1,9 @@
 package com.example;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Util {
-	
+
 	boolean isEven(int num) {
 		if(num%2==0) {
 			return true;
@@ -13,7 +15,7 @@ public class Util {
 		return i*i;
 	}
 
-// Verify given number is present in array
+	// Verify given number is present in array
 	public boolean contains(int[] arr, int n) {
 		boolean flag = false;
 		for (int i = 0; i < arr.length; i++) {
@@ -59,7 +61,7 @@ public class Util {
 
 	// Method to square values present in arrayList
 	// [1, 2, 3, 4] => [1, 4, 9, 16]
-	
+
 	public List<Integer> square(List<Integer> intArrList) {
 
 		List<Integer> sqList = new ArrayList<>();
@@ -73,7 +75,7 @@ public class Util {
 	}
 
 	// find sum of digits in given number
-	public int intSum(int num) {// 101
+	public int intSum(int num) {// 101 = 2
 		int sum = 0;
 		while (num != 0) {
 			sum = sum + num % 10;
@@ -82,5 +84,5 @@ public class Util {
 		return sum;
 	}
 
-	
+
 }

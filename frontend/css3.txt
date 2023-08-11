@@ -1,0 +1,245 @@
+// Ways to apply styles
+  - Inline style
+   <p style="color: blue;">Para 1</p>
+  
+  - Embedded style
+  <style> element
+   <style> 
+     p {color: blue;}
+   </style>
+  
+  - external style sheet  
+   <link rel="stylesheet" href="../css/basics.css" />
+
+// cascading order
+   inline - highest priority
+   embedded
+   external file
+
+// comments
+   /* single/multi line comments */
+
+//css syntax
+  selector {declaration; declaration}
+
+//Selectors
+   Based on element/tag
+   p {color:blue}
+   
+   Based on id
+   #para1 {color: blue}
+
+   Based on class
+   .para {color: blue}
+
+   Based on specific element should be effected by class
+   p.p1 {color: blue}
+
+// grouping multiple classes
+   p.p1,
+     p.p2 {
+      color: blueviolet;
+      font-size: 24px;
+   }
+
+// universal selector selects all elements 
+   * {
+	text-align: center;
+   }
+
+// Selector examples
+   div.red{color: red} /* div with class name red */
+   div.red.green{color: red} /* div with classname red and green */
+   div, p {color: red} /* all div's and p's*/
+   div, p.red {color: red} /* all div's and p with red classes*/
+   ul li{color: red} /* all li's inside ul */
+   div .red{color:red} /*inside div, class red */
+   div > a {color: red} /*direct child */
+   li.red + li {color: red} /*sibling after li with class red */
+   li li.red {color: red} /*all sibling's after li with class red *
+
+   li: first child { // select very first child
+     background-color: red; 
+   }
+   li: last child { // select last child
+     background-color: red; 
+   }
+   li:nth child(3) {
+     background-color: red; 
+   }
+   ul:nth child(2n) { // formula to select every other element
+     background-color: red; 
+   }
+   ul :nth-child(odd) { // odd elements
+     color: red;
+   }
+
+pseudo classes: used to define spl state of an element. ex: user mouse over it, 
+--------------
+li:hover {
+   background-color: red;
+   padding: 12px;
+}
+input:required {
+   background-color: red;
+}
+input:checked {
+   background-color: blue;
+   margin: 10px;
+}
+
+//colors
+
+   rgb(255, 255, 255)
+   rgba() /* a- alpha, opacity - 0.0(fully transparent) to 1(not transperent at all)
+   color:voilet /* text color*/
+   background-color:voilet   /*background color*/
+   border: 1px dotted voilet /* border color*/
+   color: #eee
+   color: #1effab;
+
+// background
+background-color
+background-image
+background-repeat
+background-attachment
+background-position
+
+// margins
+margin-top
+margin-right
+margin-bottom
+margin-left
+margin: 10px; 
+margin: 10px 20px; 
+
+// padding
+padding-top
+padding-right
+padding-bottom
+padding-left
+padding: 10px; 
+padding: 10px 20px; 
+
+
+
+// links
+a:link - a normal, unvisited link
+a:visited - a link the user has visited
+a:hover - a link when the user mouses over it
+a:active - a link the moment it is clicked
+
+// display
+display: inline-block
+display: inline
+display: flex
+display: grid   
+
+// display 
+display: inline-block; // we can assign width, height for inline elements like a, span etc.,
+display: inline ;// brings div's in same line
+
+// div, p, ul - block element - inserted in new line - we can define size
+// span, b, i...  - inline elements, we can't assign size. To assign size for inline elements we need to use display: inline-block
+
+
+// other option
+display: flex;
+display: inline-flex; remove unwanted space
+.container {
+    display: flex;// moves all elements to inline
+    justify-content: center;
+}
+
+
+
+Text color
+----------
+color:#00ff00 ;//hex value
+color:rgb(255,0,0) // RGB value
+color:blue //color name 
+
+Text alignment
+---------------
+text-align:center
+text-align:right
+text-align:justify
+
+text-decoration
+---------------
+text-decoration:overline
+text-decoration:line-through
+text-decoration:underline
+text-decoration:blink
+
+text-transform
+---------------
+text-transform:uppercase
+text-transform:lowercase
+text-transform:capitalize
+
+indentation
+-----------
+text-indent:50px
+
+text-shadow
+
+font
+----
+font-family
+font-style
+font-size
+
+Background
+-----------
+background-color
+background-image
+background-repeat
+background-attachment
+background-position
+background-size
+background-origin
+
+Colors
+------
+Hexadecimal colors
+RGB colors
+RGBA colors
+HSL colors
+HSLA colors
+Predefined/Cross-browser color names
+
+Border
+-------
+border-style
+border-width
+border-color
+border-radius
+box-shadow
+border-image
+border-collapse
+border-spacing
+
+
+Flex-Box:
+----------
+<style>
+            ul {
+                list-style-type: none; /* removes bullet point */
+                padding: 0;
+                margin: 0;
+                border: 1px solid goldenrod;
+                display: flex;
+                flex-direction: row; /*column, row-reverse, column-reverse*/
+                flex-wrap: wrap; /*wrap-reverse, no-wrap*/
+                justify-content: space-evenly; /*flex-end, center, space-between, space-around, space-evenly */
+
+                height: 50px; /* height of container */
+                align-items: center; /* align items center veritially */
+            }
+            li {
+                border: 1px solid brown;
+                padding:5px;
+                margin: 5px;
+            }
+        </style>

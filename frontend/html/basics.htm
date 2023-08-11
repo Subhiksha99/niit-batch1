@@ -4,20 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link href="../css/basics.css" rel="stylesheet" type="text/css" />
+    <style>
+      /* tag seletor*/
+      td,
+      th,
+      table {
+        border: 1px solid green;
+        border-collapse: collapse;
+      }
+      /* id selector */
+      #p1 {
+        font-size: 18px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+      }
+      /* class selector*/
+      .htag {
+        font-style: italic;
+        color: rgb(0, 0, 255);
+        font-family: sans-serif;
+      }
+    </style>
   </head>
   <body>
     <a id="address1"></a>
     <!-- Header tags -->
-    <h1>h1 header</h1>
-    <h2>h2 header</h2>
-    <h3>h3 header</h3>
-    <h4>h4 header</h4>
-    <h5>h5 header</h5>
-    <h6>h6 header</h6>
+    <h1
+      style="
+        color: blue;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+          sans-serif;
+      "
+    >
+      h1 header
+    </h1>
+    <h2 class="htag">h2 header</h2>
+    <h3 class="htag">h3 header</h3>
+    <h4 class="htag">h4 header</h4>
+    <h5 class="htag">h5 header</h5>
+    <h6 class="htag">h6 header</h6>
 
     <!--Paragraph-->
     <!--lorem50-->
-    <p>
+    <p id="p1">
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque quia
       dolore, tempore accusamus illo earum praesentium maiores delectus sit quos
       blanditiis, accusantium perspiciatis reiciendis nobis temporibus dicta.
@@ -102,10 +132,10 @@
     <table>
       <thead>
         <tr>
-          <th>S.No</th>
-          <th>Full Name</th>
-          <th>Position</th>
-          <th>Salary</th>
+          <th style="border: 1px dotted red">S.No</th>
+          <th style="border: 1px dotted red">Full Name</th>
+          <th style="border: 1px dotted red">Position</th>
+          <th style="border: 1px dotted red">Salary</th>
         </tr>
       </thead>
       <tbody>
@@ -121,18 +151,7 @@
           <td>Founder Apple</td>
           <td>$1200</td>
         </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        
       </tbody>
     </table>
 

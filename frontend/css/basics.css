@@ -1,0 +1,37 @@
+/*
+ways to apply styles
+inline styling
+internal styling
+external styling
+*/
+/*Universal Selector*/
+* {
+    margin: 0;
+    padding:0
+}
+
+/* Attribute Selector*/
+[type="a"] {
+    color:brown;
+    font-weight: bold;
+}
+
+/* tag selector */
+form {
+    border: 2px solid gray;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+input {
+    padding: 3px;
+}
+
+/* Group Selector */
+label, input {
+    margin-bottom:5px;
+}
+

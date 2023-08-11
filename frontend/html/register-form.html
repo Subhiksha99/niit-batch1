@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+  </head>
+  <body>
+    <label>Search country</label>
+    <input type="search" list="country" />
+    <datalist id="country">
+      <option value="Australia"></option>
+      <option value="Austria"></option>
+      <option value="Algeria"></option>
+      <option value="Andorra"></option>
+      <option value="Angola"></option>
+    </datalist>
+
+    <hr />
+    <form>
+      <label>Username</label><br />
+      <input
+        type="text"
+        placeholder="Enter name"
+        size="20"
+        maxlength="5"
+        required
+      />
+      <br />
+      <label>Password</label><br />
+      <input type="password" disabled pattern="[a-zA-Z0-9]{8}" required />
+      <br />
+      <label>DOB</label><br />
+      <input type="date" /> <br />
+      <label>Email</label><br />
+      <label>Address</label> <br />
+      <textarea cols="20" rows="3" placeholder="Enter your address"></textarea
+      ><br />
+      <label>Gender</label> <br />
+      <input type="radio" name="gender" />
+      <label>Male</label>
+      <input type="radio" name="gender" />
+      <label>Female</label><br />
+      <label>Select your country</label><br />
+      <select>
+        <option>Country Name</option>
+        <option selected>India</option>
+        <option>China</option>
+        <option>Japan</option>
+        <option>UK</option></select
+      ><br />
+      <input type="checkbox" />
+      <label>I agree terms and conditions</label> <br />
+      <input type="checkbox" />
+      <label
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+        soluta libero assumenda officiis ratione beatae?</label
+      >
+      <br />
+      <input type="button" value="Submit" /><br />
+      <small>
+        Already have an account? <span><a href="#">Sign in</a></span>
+      </small>
+    </form>
+  </body>
+</html>

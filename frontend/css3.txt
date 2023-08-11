@@ -56,21 +56,21 @@
    div .red{color:red} /*inside div, class red */
    div > a {color: red} /*direct child */
    li.red + li {color: red} /*sibling after li with class red */
-   li li.red {color: red} /*all sibling's after li with class red *
+   li+li.red {color: red} /*all sibling's after li with class red *
 
-   li: first child { // select very first child
+   li: first-child { // select very first child
      background-color: red; 
    }
-   li: last child { // select last child
+   li: last-child { // select last child
      background-color: red; 
    }
-   li:nth child(3) {
+   li:nth-child(3) {
      background-color: red; 
    }
-   ul:nth child(2n) { // formula to select every other element
+   ul:nth-child(2n) { // formula to select every other element
      background-color: red; 
    }
-   ul :nth-child(odd) { // odd elements
+   ul:nth-child(odd) { // odd elements
      color: red;
    }
 

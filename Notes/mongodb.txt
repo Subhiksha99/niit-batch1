@@ -1,0 +1,132 @@
+Download
+--------
+community edition
+https://www.mongodb.com/try/download/community
+v6.0.8
+
+MongoShell
+1. download mongo shell zip file from below link
+https://www.mongodb.com/try/download/shell
+2. after downloading extract and add bin path in environment variables
+3. open new command prompt and type 'mongosh'
+
+
+Note
+----
+Table - Collection
+Field - Column
+Row   - Document
+
+// mongodb url
+mongodb://localhost:27017
+
+//Add both applications 'bin' path in environment variables
+
+// Create below folders in C drive
+data/db
+
+// open command prompt and run below command
+c:/>mongod
+
+// Open shell prompt
+c:/>mongosh
+
+MongoDB
+=======
+commands
+--------
+DB 
+--
+
+// View db's
+show dbs;
+
+// Use specific DB
+use myDB;
+
+// show current db
+db;
+
+// delete db
+db.dropDatabase();
+
+=>Collection
+------------
+
+// Show collection
+show collections;
+
+// Create collection
+db.createCollection('employee');
+
+// insert one document
+db.employee.insert(
+{
+    'name': "Raj",
+    'age': 21
+});
+
+// insert many documents
+
+db.employee.insertMany([
+ {
+    'name': "Ram",
+    'age': 21
+ },
+ {
+    'name': "Sam",
+    'age': 21
+ },
+]);
+
+
+// Search
+db.employee.find(
+ {
+   'name': "Raj"
+ }
+);
+
+
+// Limit - Limit the number of document in output
+db.employee.find().limit(2)
+
+
+// count - count number of documents
+db.employee.find().count()
+
+// update - update document
+db.employee.update(
+    {  
+       'name': 'Raj"
+    },
+    {
+       'name': 'Raj',
+       'age': 25,
+    },
+    {
+	upsert: true
+    }
+);
+
+// increment value in document
+db.employee.update(  
+   {'name': 'Raj'},
+   {$inc: {'age': 26}} 
+);
+
+// Rename 
+
+db.employee.update(  
+   {'name': 'Raj'},
+   {$rename: {'name': 'Raj Kumar'}} 
+)
+
+// Delete a document
+db.employee.remove({'name': 'Raj'});
+db.employee.deleteOne();
+
+// Show all documents in formatted manner
+db.employee.find().pretty();
+
+

@@ -1,0 +1,87 @@
+JDBC  - Java Database Connectivity
+=====
+
+- Java API, helps to connect Java with wide range of databases.
+
+					       <-->JDBC Driver<-->DB
+Java App <-->JDBC API <-->JDBC Driver Manager  <-->JDBC Driver<-->DB                                      
+					       <-->JDBC Driver<-->DB
+
+
+// Classes & Interfaces in JDBC
+Driver Manager(C) - manages list of db drivers
+Driver(I)         - handles communication with the db.
+Connection(I)     - creates connection to the db
+Statement(I)      - executes sql queries
+  Types
+    Statement              - DDL(Data Definition Language) commands
+                           - CREATE, DROP, ALTER, TRUNCATE...
+    Prepared Statement     - DML(Data Manipulation Language) commands
+                           - INSERT, UPDATE, DELETE, SELECT...
+    Callable Statement     - Procedures/functions
+         
+ResultSet         - holds data retrieved from db after sql query execution. 
+SQLExceptions
+
+
+// methods to execute queries
+ResultSet executeQuery(String sql)    - SELECT query
+int executeUpdate(String sql)         - INSERT, UPDATE, DELETE
+boolean excute(String sql)            - Any type of Query
+
+
+// Driver - Translates standard JDBC calls into db specific calls.
+
+
+Types of Drivers
+
+Type 1 – JDBC-ODBC Bridge Driver
+  - Java Servlet Programs -T1 Driver--> JDBC-ODBC Bridge -> ODBC Driver ->DB
+  - Obsoleted
+
+Type 2 –Native API Driver
+  - Java Servlet -T2 Driver-->DB Library -->DB
+                          (Native code)
+  - converts JDBC method calls to native calls for db API,
+  - faster compare to Type1 driver.
+  
+*** Note: Type 1 drivers, Type 2 drivers require native database client   
+        libraries to be installed and configured on the client machine.
+
+Type 3 – Network Protocol Driver
+   -  Java Servlet  ---T3 Driver--> Middleware(Server)-->DB
+   -  requires native db libraries
+
+Type 4 – Thin driver
+   -  Java Servlet---T4(Java)-->DB
+   - pure Java drivers
+   - Like Type 3 drivers, they do not require native database libraries
+   - communicate with db directly without middleware/native library.
+   - faster compare to Type2/Type3
+
+
+
+- Steps for creating JDBC program
+
+1. Load and Register Driver
+   class.forName("com.mysql.cj.jdbc.Driver");
+2. Create connection
+   Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "username", "password");
+3. Create statement
+   Statement stmt = connection.createStement();
+4. Execute query
+   ResultSet rs = stmt.executeQuery("select * from employee");
+5. Extract data from resultset
+   while(rs.hasNext()) {
+      int rNo = rs.getInt("rollNo");
+      String name = rs.getString("name");
+      System.out.println(rNo+" "+name);
+6. cleanup - close all connections to db.
+   rs.close();
+   stmt.close();
+   connection.close();
+
+- Driver for mysql
+   mysql-connector-java-8.0.20.jar 
+
+

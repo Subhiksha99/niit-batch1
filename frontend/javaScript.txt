@@ -1,0 +1,229 @@
+
+
+<script>
+   console.log("Hello World!!!")
+</script>
+
+// external file reference
+<script src="basics.js"></script>
+
+
+// Displaying output
+- innerHTML        - write into HTML element
+Ex:
+<p id="p1"></p>
+<script>
+  document.getElementById("p1").innerHTML="Hello World!!!"
+</script>
+- document.write() - Write into HTML output
+ex:
+<script>
+  document.write("Hello World")
+</script>
+- window.alert()   - alert box
+- console.log()    - write into browser console
+- window.print()   - print content of page
+
+
+
+// variables - let, var, const
+let x = 10;     // ES5, Block scope
+var y = 100;    // Global scope
+const z = 1000; // ES6, Block scope
+let name = 'Ram';
+let a,b,c=2000;
+
+
+// Operators
+Arithmetic Operators  - +, -, *, **(Exponentiation), /, %, ++, --
+Assignment Operators  - =, +=, -=, *=, /=
+Comparison Operators  - ==, ===, !=, !==, >, <, <=, >=, ?(ternary operator)
+ ==  - loose equality - value alone compared
+  ex - 
+    let x = 100;
+    let y = '100'; 
+    x==y;  true
+
+ === - strict equality - type and value will be compared
+   ex - 
+    let x = 100;
+    let y = '100'; 
+    x===y;  false
+
+
+Logical Operators     - &&, ||, !
+Bitwise Operators     - &, !, ~, ^, <<(leftshift), >>(rightshipt)
+Ternary Operators
+Type Operators        - typeof, instanceof
+
+
+// Identifiers
+A-Z, a-z, $, _, 0-9
+
+
+
+// comments
+// single line comment
+/* multi
+   line
+   comment
+*/
+
+
+
+// Hoisting -  use variables before it is declared.
+- variable declared using 'var' keyword are hoisted to the top.
+
+Ex:
+name = "Raj";
+var name;
+
+
+
+// Data Types
+String, Number, Bigint, Boolean, Undefined, Symbol & Object
+
+let y; // undefined
+
+
+let x = BigInt('12345678991214412314325465');
+
+Object - {}
+ex: const student = {rollNo: 123, name: "Shiv"}
+
+Array Object - []
+const colors = ["red", "pink"]
+
+
+
+// Function
+function funcName(parameter1, parameter2) {
+  // code 
+}
+
+
+
+// conditional statements
+
+
+// loops
+- for
+for (initialization; condition; updateExpression) {
+  // statements
+}
+
+// loop over properties of an object
+for (key in object) {
+  // code
+}
+
+// loop over strings, arrays
+for (variable of iterable) {
+  // cod
+}
+
+while
+dowhile
+
+- switch
+switch(expression) {
+  case x:
+    // code block
+    break;
+  case y:
+    // code block
+    break;
+  default:
+    // code block
+}
+
+
+// Events
+- onclick
+
+Ex:
+<p id="p1"></p>
+<button onclick=displayDate()>Click</button>
+<script>
+ function displayDate() {
+    document.getElementById("p1").innerHTML=Date();
+ }
+</script>
+
+- onmouseover
+
+Ex:
+<p onmouseover=>Change color</p>
+<script>
+ function displayDate() {
+    document.getElementById("p1").style.color='red';
+ }
+</script>
+
+- onmouseout
+- onload
+- onchange
+- onsubmit
+
+
+// String - '', ""
+// methods
+length
+slice()      - extract part of string and returns extracted string
+substring()  - extract part of string
+replace()
+replaceAll()
+toUpperCase()
+toLowerCase()
+concat()
+trim()
+trimStart()
+trimEnd()
+charAt()
+split()      - string to array
+indexOf()
+lastIndexOf()
+search()     - searches for a value and return position of first match
+match()      - searches for a match in string
+matchAll()   - method returns an iterator of results after matching a string against a regular expression.
+includes()   - return boolean,  if string contains value returns true else false
+startsWith()
+endsWith()
+
+
+
+// Array
+// methods
+length
+toString()
+pop()
+push()
+join()
+delete()
+concat()
+flat()
+splice()
+slice()
+
+// Type Conversions
+Strings to Numbers
+Numbers to Strings
+Dates to Numbers
+Numbers to Dates
+
+
+// Date
+// Math
+// Random
+// RegExp
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="OnClick" onclick="onClickEvent()" />
+    <input type="button" value="Print" onclick="window.print()" />
+    <input type="button" value="delete" onclick="window.alert('Are you sure to delete?')" />
+    <p id="p1"></p>
+
+    <p id="p2" onmouseover="onMouseOverEvent()" onmouseout="onMouseOutEvent()">Change color onmouseover event</p>
+
+    <script>
+        console.log("Hello World!")
+        function onClickEvent() {
+            document.getElementById('p1').innerHTML = Date();
+        }
+        function onMouseOverEvent() {
+            document.getElementById('p2').style.color = "red"
+            document.getElementById('p2').style.fontSize = "24px"
+        }
+        function onMouseOutEvent() {
+            document.getElementById('p2').style.color = "black"
+            document.getElementById('p2').style.fontSize = "16px"
+        }
+
+    </script>
+    <script src="basics.js"></script>
+</body>
+
+
+</html>

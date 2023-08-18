@@ -181,12 +181,3 @@ p1.setName("Raj K");
 console.log(p1.age);
 console.log(p1.name)
 
-// export & import
-// export types - default export & named exports
-
-// export default es6_demo;
-// import es6_demo from '../path';
-
-// named export
-
-// import {add, sub} from '../path';

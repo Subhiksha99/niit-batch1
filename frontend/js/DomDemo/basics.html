@@ -1,0 +1,125 @@
+<!-- 
+Promise -used to verify asynchronous operations is completed successfully or not.
+
+states - Pending, Fulfilled/Completed, Rejected
+
+A promise start in pending state. 
+Operation success, state will be fullfilled/completed.
+Error occurs, process state ends in rejected state.
+
+// create a promise object
+let promise= new Promise(function(resolve, reject)) {
+   // code to make async call
+}
+Promise construtor takes function as an input.
+The function also takes two functions - resolve & reject as an input.
+
+If Operation success, resolve() function needs to be  called.
+If error occurs, reject() function needs to be called.
+
+
+
+Promise Chaining- 
+  promise.then(products=>console.log(products)).then().catch(e=>console.log(e));
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <p style="color:blue">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, quae.</p>
+    </div>
+    <form action="/login" name="loginForm" method="post" onsubmit="return validateLoginForm()">
+        <label for="email">Email</label><br />
+        <input id="email" name="email" type="email" placeholder="Enter email addr" /></br>
+        <p id="emailErr"></p>
+        <label for="password">Password</label><br />
+        <input id="password" name="password" type="password" placeholder="Enter password" /></br>
+        <p id="passwdErr"></p>
+        <input type="submit" value="Login" />
+    </form>
+    <input type="button" value="OnClick" onclick="onClickEvent()" />
+    <input type="button" value="Print" onclick="window.print()" />
+    <input type="button" value="delete" onclick="window.alert('Are you sure to delete?')" />
+    <p id="p1"></p>
+
+    <p id="p2" onmouseover="onMouseOverEvent()" onmouseout="onMouseOutEvent()">Change color onmouseover event</p>
+    <p id="p3">click here</p>
+
+    <script>
+        document.getElementById("p3").addEventListener("mouseover", () => { console.log("User clicked") });
+
+        // Callback function
+        Ex:
+        setTimeout(() => {
+            console.log("Hello World");
+        }, 3000)
+
+        let hello = () => {
+            console.log("Hello World");
+        };
+
+        setTimeout(hello, 6000);
+
+        // Ex2
+        const shapes = ['cube', 'square', 'triangle'];
+        function display(shapes, cb) {
+            for (let i = 0; i < shapes.length; i++) {
+                let shape = shapes[i];
+                console.log(shape);
+                cb(shape)
+            }
+        }
+
+        display(shapes, (shape) => {
+            console.log(shape.toUpperCase());
+        })
+
+        // promise 
+
+
+
+        function onClickEvent() {
+            document.getElementById('p1').innerHTML = Date();
+        }
+        function onMouseOverEvent() {
+            document.getElementById('p2').style.color = "red"
+            document.getElementById('p2').style.fontSize = "24px"
+        }
+        function onMouseOutEvent() {
+            document.getElementById('p2').style.color = "black"
+            document.getElementById('p2').style.fontSize = "16px"
+        }
+
+
+        function validateLoginForm() {
+            // read form field data 
+            // document.getElementById("emailErr").innerHTML = ""
+            // document.getElementById("passwdErr").innerHTML = ""
+            console.log("###email: " + email);
+            console.log("###password: " + password);
+            let email = document.forms["loginForm"]["email"].value;
+            let password = document.forms["loginForm"]["password"].value;
+            if (email == "") {
+                document.getElementById("emailErr").innerHTML = "Email address shouldn't blank."
+                document.getElementById("emailErr").style.color = "red";
+                return false;
+            }
+            if (password == "") {
+                document.getElementById("passwdErr").innerHTML = "password shouldn't blank."
+                document.getElementById("passwdErr").style.color = "red";
+                return false;
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

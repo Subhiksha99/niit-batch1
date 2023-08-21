@@ -46,5 +46,116 @@ packages -
  com.example.repository
    Interfaces & Implementation classes for storing and retrieving information about users, books & loanRecords
 
+=============================================================
+// Sample code
+// Entity
+com.example.entity
+  //User, Book, LoanRecords
 
+class User {
+ // fields
+ private int id;
+ private String uName;
+
+ // constructor
+ User() {}
+ User(int id) {this.id=id}
+
+ // public Getters & Setters
+
+ // toString()
+}
+
+// Service
+com.example.service
+// interface
+interface IUserService {
+  User addUser(User user);
+  void deleteUser(int id);
+  User updateUser(int id, String newEmail);
+  User updateUser(User user);
+  List<User> getAllUsers();
+} 
+
+// UserServiceImpl.java
+import com.example.repository.UserRepositoryImpl
+import com.example.repository.IUserRepository
+
+class UserServiceImpl implements IUserService{
+  // Create userRepo obj
+  IUserRepository userRepo =  new UserRepositoryImpl();
  
+  User addUser(User user) {
+     return userRepo.addUser(user);
+  };
+  void deleteUser(int id) {};
+  User updateUser(int id, String newEmail) {};
+  User updateUser(User user) {};
+  List<User> getAllUsers() {};
+}
+
+// Repository
+// com.example.repository
+interface IUserRepository {
+  User addUser(User user);
+  void deleteUser(int id);
+  User updateUser(int id, String newEmail);
+  User updateUser(User user);
+  List<User> getAllUsers();
+} 
+class UserRespositoryImpl implements IUserRepository{
+  List<User> userList = new ArrayList<>();
+  User addUser(User user) {
+ 	// logic
+        userList.add(user);
+        return user;
+  };
+  void deleteUser(int id) {};
+  User updateUser(int id, String newEmail) {};
+  User updateUser(User user) {};
+  List<User> getAllUsers() {};
+}
+
+
+// Main.java
+// com.example
+import com.example.service.BookServiceImpl;
+import com.example.service.IBookService;
+
+class App {
+   public static void main(String[] args) {
+	IBookService bookService = new BookServiceImpl();
+
+        Scanner sc = new Scanner(System.in);
+        sop("1. User");
+        sop("2. Admin");
+        sop("3. Library Manager");
+      
+        sop("Select role");
+        int role = sc.nextInt();
+
+        switch(role) {
+
+          case 1:
+		sop("1. list books");
+                sop("2. search book");
+                sop("Select Option");
+                int selOpt= sc.nextInt();             
+                switch(selOpt) {
+                   case 1:
+                     sop(bookService.getAllBooks());
+                   case 2:
+                   default:     
+                }
+               break;
+         case 2:
+               break;
+ 
+         default:
+       }
+
+   }
+
+}
+
+======================================

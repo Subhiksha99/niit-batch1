@@ -29,7 +29,7 @@ Book-
   
 User -
   - create private Fields 
-    id, username, fullName, contactNo,  email, password, role
+    id, username, fullName, contactNo,  email, password, role, dob
 
 LoanReacord -
   - create private Fields 
@@ -46,116 +46,40 @@ packages -
  com.example.repository
    Interfaces & Implementation classes for storing and retrieving information about users, books & loanRecords
 
-=============================================================
-// Sample code
-// Entity
-com.example.entity
-  //User, Book, LoanRecords
+import java.time.LocalDate;
+ class User {
+    String name,
+    LocalDate dob;
 
-class User {
- // fields
- private int id;
- private String uName;
-
- // constructor
- User() {}
- User(int id) {this.id=id}
-
- // public Getters & Setters
-
- // toString()
+    User(String name, LocalDate dob) {
+       this.name = name;
+       this.dob = dob;
+    }
 }
 
-// Service
-com.example.service
-// interface
-interface IUserService {
-  User addUser(User user);
-  void deleteUser(int id);
-  User updateUser(int id, String newEmail);
-  User updateUser(User user);
-  List<User> getAllUsers();
-} 
-
-// UserServiceImpl.java
-import com.example.repository.UserRepositoryImpl
-import com.example.repository.IUserRepository
-
-class UserServiceImpl implements IUserService{
-  // Create userRepo obj
-  IUserRepository userRepo =  new UserRepositoryImpl();
- 
-  User addUser(User user) {
-     return userRepo.addUser(user);
-  };
-  void deleteUser(int id) {};
-  User updateUser(int id, String newEmail) {};
-  User updateUser(User user) {};
-  List<User> getAllUsers() {};
-}
-
-// Repository
-// com.example.repository
-interface IUserRepository {
-  User addUser(User user);
-  void deleteUser(int id);
-  User updateUser(int id, String newEmail);
-  User updateUser(User user);
-  List<User> getAllUsers();
-} 
-class UserRespositoryImpl implements IUserRepository{
-  List<User> userList = new ArrayList<>();
-  User addUser(User user) {
- 	// logic
-        userList.add(user);
-        return user;
-  };
-  void deleteUser(int id) {};
-  User updateUser(int id, String newEmail) {};
-  User updateUser(User user) {};
-  List<User> getAllUsers() {};
-}
+User user = new User("Raj", LocalDate.of(2002, 12, 21));
 
 
-// Main.java
-// com.example
-import com.example.service.BookServiceImpl;
-import com.example.service.IBookService;
+class Outer {
+   
+   static class InnerStaticClass {
+      void m1() {}
+   }
 
-class App {
-   public static void main(String[] args) {
-	IBookService bookService = new BookServiceImpl();
-
-        Scanner sc = new Scanner(System.in);
-        sop("1. User");
-        sop("2. Admin");
-        sop("3. Library Manager");
-      
-        sop("Select role");
-        int role = sc.nextInt();
-
-        switch(role) {
-
-          case 1:
-		sop("1. list books");
-                sop("2. search book");
-                sop("Select Option");
-                int selOpt= sc.nextInt();             
-                switch(selOpt) {
-                   case 1:
-                     sop(bookService.getAllBooks());
-                   case 2:
-                   default:     
-                }
-               break;
-         case 2:
-               break;
- 
-         default:
-       }
-
+   class InnerClass {
+     void m2() {}
    }
 
 }
 
-======================================
+class Test {
+    psvm() {
+        Outer.InnerStaticClass st = new Outer.InnerStaticClass();
+        st.m1();
+       
+        Outer outer = new Outer();
+        Outer.InnerClass ns = outer.new InnerClass();
+        ns.m2();
+    }
+
+}

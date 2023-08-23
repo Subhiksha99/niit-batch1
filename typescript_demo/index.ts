@@ -77,12 +77,71 @@ function hello(name: string): string { return `Hello ${name}` }
 function square(numArr: number[]): number[] {
     return [];
 }
+
 function func(person: {}): {} {
     return {};
 }
 
+
 console.log()
 
+// Generics
+const numArr: number[] = [10, 20, 30, 40];
+const strArr: string[] = ['aa', 'bb', 'cc'];
+
+function getRandomElement(arr: number[]) {
+
+    //Math.random(); // 0-1
+    let indx = Math.floor(Math.random() * arr.length);
+    console.log(indx);
+
+    return arr[indx];
+}
+
+console.log(getRandomElement(numArr));
 
 
+function getRandomElement2(arr: string[]) {
+
+    //Math.random(); // 0-1
+    let indx = Math.floor(Math.random() * arr.length);
+    console.log(indx);
+
+    return arr[indx];
+}
+
+console.log(getRandomElement2(strArr));
+
+// With Generics
+console.log("With Generics")
+function getRandomElement3<T>(arr: T[]) {
+
+    //Math.random(); // 0-1
+    let indx = Math.floor(Math.random() * arr.length);
+    console.log(indx);
+
+    return arr[indx];
+}
+
+console.log(getRandomElement3<number>(numArr));
+console.log(getRandomElement3<string>(strArr));
+
+// Generic classes
+class MyClass<Type>{
+    x: Type;
+
+    getX(): Type {
+        return this.x;
+    }
+}
+
+let myClass = new MyClass<number>();
+myClass.x = 1000;
+console.log(myClass.x);
+console.log(myClass.getX());
+
+let myClass2 = new MyClass<string>();
+myClass2.x = 'hello';
+console.log(myClass2.x);
+console.log(myClass2.getX());
 

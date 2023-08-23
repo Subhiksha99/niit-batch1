@@ -18,5 +18,8 @@
   "directories": {
     "test": "test"
   },
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@angular/cli": "^16.2.0"
+  }
 }

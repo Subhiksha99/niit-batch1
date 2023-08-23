@@ -52,12 +52,71 @@ var weekdays;
 ;
 var currentSize = sizes.SMALL;
 var today = weekdays.TUESDAY;
-console.log(typeof (today));
-console.log(typeof (weekdays.SATURDAY));
+console.log(typeof (today)); // number
+console.log(typeof (weekdays.SATURDAY)); // number
 // console.log(currentSize == sizes.LARGE ? true : false); // true
 // console.log(today == weekdays.TUESDAY ? true : false); // true
 console.log(sizes.MEDIUM); //1
-switch (currentSize) {
-    case sizes.SMALL:
-        console.log("Small size");
+// switch (currentSize) {
+//     case sizes.MEDIUM:
+//         console.log("Medium size");
+//     case sizes.SMALL:
+//         console.log("Small size");
+//         break;
+// }
+// Function
+function add(x, y) { return x + y; }
+function sub(x, y) { return x - y; }
+function greetings() { console.log("Hello World!"); }
+function hello(name) { return "Hello ".concat(name); }
+function square(numArr) {
+    return [];
 }
+function func(person) {
+    return {};
+}
+console.log();
+// Generics
+var numArr = [10, 20, 30, 40];
+var strArr = ['aa', 'bb', 'cc'];
+function getRandomElement(arr) {
+    //Math.random(); // 0-1
+    var indx = Math.floor(Math.random() * arr.length);
+    console.log(indx);
+    return arr[indx];
+}
+console.log(getRandomElement(numArr));
+function getRandomElement2(arr) {
+    //Math.random(); // 0-1
+    var indx = Math.floor(Math.random() * arr.length);
+    console.log(indx);
+    return arr[indx];
+}
+console.log(getRandomElement2(strArr));
+// With Generics
+console.log("With Generics");
+function getRandomElement3(arr) {
+    //Math.random(); // 0-1
+    var indx = Math.floor(Math.random() * arr.length);
+    console.log(indx);
+    return arr[indx];
+}
+console.log(getRandomElement3(numArr));
+console.log(getRandomElement3(strArr));
+// Generic classes
+var MyClass = /** @class */ (function () {
+    function MyClass() {
+    }
+    MyClass.prototype.getX = function () {
+        return this.x;
+    };
+    return MyClass;
+}());
+var myClass = new MyClass();
+myClass.x = 1000;
+console.log(myClass.x);
+console.log(myClass.getX());
+var myClass2 = new MyClass();
+myClass2.x = 'hello';
+console.log(myClass2.x);
+console.log(myClass2.getX());

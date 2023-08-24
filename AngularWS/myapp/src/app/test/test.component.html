@@ -1,0 +1,78 @@
+<p>test works!</p>
+<!-- Property binding - [] - DOM properties-->
+<p [id]="para">Property Binding</p>
+
+<!-- Attribute binding - [attr.attributeName] - HTML attributes-->
+<table>
+    <thead>
+        <tr>
+            <!-- <th [attr.colspan]="colspan">Student Details</th> -->
+            <th attr.colspan="{{colspan}}">Student Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Raj</td>
+            <td>K</td>
+        </tr>
+    </tbody>
+</table>
+
+<!--Style binding- [style.propertyName]=value - applying single style property-->
+<p [style.color]="para2">Style binding</p>
+
+<!--ClassBinding - applying more than one style-->
+<p [class]="para3">Class Binding</p>
+
+<h3>Event Binding</h3>
+<!--Event Binding() - transfer data from template to component -->
+<input type="button" value="Try Me" (click)="onClick()" /> <br /><br />
+
+<div>
+    <input type="button" value="Increment" (click)="onIncrement()" />
+    Count: {{counter}}
+    <input type="button" value="Decrement" (click)="onDecrement()" />
+</div> <br />
+
+<h3> Two way binding</h3>
+<!-- Attribute Binding-->
+<!-- Two way binding-->
+{{email}}
+<form>
+    <label>Email</label><br />
+    <input type="email" name="email" placeholder="enter email address" [(ngModel)]="email" />
+</form>
+
+<!--ngStyle directive-->
+<p [ngStyle]="{color:flag?'red':'blue'}">ngStyle Directive</p>
+
+<!--ngClass directive-->
+<p [ngClass]="flag?'redCls':'blueCls'">ngClass Directive</p>
+
+<!--Structural Directives- ngIf, ngFor, ngSwitch-->
+<a *ngIf="!isLogin" href="#">Login</a>
+<a *ngIf="!isLogin" href="#">Register</a>
+<a *ngIf="isLogin" href="#">Logout</a>
+
+<ul>
+    <li>India</li>
+    <li>China</li>
+    <li>Japan</li>
+</ul>
+
+<!--ngFor-->
+<ul *ngFor="let c of countries">
+    <li>{{c}}</li>
+</ul>
+
+<!--ngSwitch-->
+<ul [ngSwitch]="day">
+    <li *ngSwitchCase="1">Monday</li>
+    <li *ngSwitchCase="2">Tuesday</li>
+    <li *ngSwitchCase="3">Wednesday</li>
+    <li *ngSwitchCase="4">Thursday</li>
+    <li *ngSwitchCase="5">Friday</li>
+    <li *ngSwitchCase="6">Saturday</li>
+    <li *ngSwitchCase="7">Sunday</li>
+    <li *ngSwitchDefault>Oops something went wrong!!</li>
+</ul>

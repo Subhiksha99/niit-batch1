@@ -1,0 +1,29 @@
+#p1 {
+    font-size: large;
+    color: blue;
+    font-style: italic;
+}
+
+td,
+thead {
+    border: 1px solid red;
+}
+
+.p3 {
+    color: darkgreen;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 34px;
+    text-decoration: underline;
+}
+
+.redCls {
+    text-decoration: underline;
+    color: red;
+    font-size: 34px;
+}
+
+.blueCls {
+    text-decoration: line-through;
+    color: blue;
+    font-size: 24px;
+}

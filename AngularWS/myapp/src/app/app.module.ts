@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TestComponent } from './test/test.component';
 import { FormsModule } from '@angular/forms';
+import { ExcounterComponent } from './excounter/excounter.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     LoginComponent,
     NavbarComponent,
-    TestComponent
+    TestComponent,
+    ExcounterComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

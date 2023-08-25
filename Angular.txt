@@ -1,0 +1,585 @@
+Angular
+--------
+Angular is a TypeScript-based, free and open-source single-page(SPA) web application framework led by the Angular Team at Google.
+
+- 20.39% of web developers working on this framework. 
+- Fifth most used web framework in 2022 globally.
+
+Releases
+ Angular JS - Oct'2010 - 1.0
+ Angular 2  - 2014
+ Angular 3  - Skipped - due to misalignment of router pkg, release in v3.3.0
+ Angular 4  - 2016
+ Angular 5  - 2017
+ ...
+Latest release 
+ Angular 16.1.6 :   July'2023
+
+
+- Some of the Popular websites using Angular
+  Deutsche Bank, Upwork, Weather, Paypal, Forbes, Delta...
+
+- requirement
+
+1. node js
+c:/>node --version
+
+2. Angular CLI - helps to create angular project
+npm install -global @angular/cli@latest
+
+3. Create angular project
+   ng new MyApp
+
+4. Start angular app
+   c:/MyApp>ng serve
+
+
+
+
+
+
+
+- Create new custom component
+  ng generate component Home
+
+- app.module.ts
+  imports - meant for module registrations
+  declarations - meant for component registration
+  providers - meant for service registration
+  bootstrap - tells which component to be bootstraped
+
+
+- Component:
+   
+   - is a typescript class decorated with @Component decorator
+   - it contains code/UI Logic required to view template.
+   - App Component is the root component
+
+import {Component} from '@angular/core';
+
+@Component({  
+selector: 'app-root',
+templateUrl: './app.component.html',
+styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+   // code..
+   title = 'AngularApp';
+}
+
+- class - contains code to view template.
+- decorator - adds a meta data to class to make it as a component
+- view template - defines user interface, contains html, directives & data bindings
+
+
+Angular Architecture
+Core concepts:
+  1. Components.
+  2. Templates with Data binding and Directives.
+  3. Modules.
+  4. Services and dependency injection.
+
+ - App - Contains one or more Modules
+ - Module - contain one or more Components & Services
+ - Component - Class + HTML + CSS
+ - Services  - Business Logic
+
+Module:
+  - Every angular application is built by using one or more modules
+  Ex:
+    - User Module
+    - Admin Module
+    - Product Module
+  - Modules can Import/Export
+  - By default AppModule(Root Module) is created
+  - Each module is made up of one or more component or services.
+ 
+
+Component
+  - building block of angular app
+  - every angular application is made up of one or more components
+  - 'app' component created by default at the time of project creation
+  - 'app' component is the parent component of all components
+  - All other components nested inside app/root component  
+  - Component is a plain js/ts class with a html template and associated name.
+  
+                          Component
+                              |
+                              | renders
+                              |
+      othercomp<--- uses ---Template ---uses--->stylesheet
+
+
+// Component code
+// src/app/app.component.ts 
+import { Component } from '@angular/core'; @Component({ 
+   selector: 'app-root', 
+   templateUrl: './app.component.html', 
+   styleUrls: ['./app.component.css'] 
+}) 
+export class AppComponent { 
+   title = 'myApp'; 
+}
+
+@component - decorator 
+ - makes ts class to angular component
+
+selector: app-root   - 
+ name of the component
+
+templateUrl -
+ sets HTML file path
+
+styleUrls - 
+ sets stylesheet file path
+
+styles - 
+ inline styles
+  
+
+package.json - 
+  dependencies -
+    required to run app properly.
+  devDependencies - 
+     required for developement & testing purpose only
+  scripts - 
+    provides custom commands 
+
+src -folder
+  main.ts -
+    Entry point of angular application
+  app -
+    app.module.ts - root module
+    app.component.ts - root component
+    
+// 
+ ng serve ->starts with main.ts
+            -> app.module.ts 
+              -> app.component.ts
+                  <!--data renders from ts to html -->
+                -> app.component.html
+
+
+
+Component - 
+  template(html)       - view 
+  class (ts)           - data & methods
+  metaData(Decorator)  - Information 
+    ex: 
+    @Component
+       tells class is a component
+
+    selector: app-root   - 
+       tag name of the component
+
+    templateUrl -
+       sets HTML file path
+
+    styleUrls - 
+        sets stylesheet file path
+
+// Create a component
+ng generate component home
+
+
+// Ways to specify selector in html
+
+// Selector as a tag
+selector: 'app-home'
+<app-home><app-home>
+
+OR
+// selector as a class
+selector: '.app-home'
+<div class='app-home'></div>
+
+OR
+// selector as an attribute
+selector: [app-home]
+<div app-home></div>
+
+
+// Inline template
+template: '<h1>Hello World</h1>'
+
+- multiple lines of html code
+template: `
+	    <div>
+	      <h1>Hello World</h1>
+	    <div>`
+
+// Inline styles
+styles: [`
+  p {
+	color: red;
+	font-weight: bold;
+  }
+`]
+
+
+// Interpolation - {{}}
+//   - binds data from class to template
+
+public name = 'Ram';
+Welcome <h1>{{name}}</h1>
+// {{expression}}
+// <p>{{ 10+15}}</p>
+// <p>{{ 'Welcome' + name}}</p>
+// <p>{{ name.length }}</p>
+// <p>{{ name.toUpperCase()}}</p>
+// <p>{{ greet()}}</p>
+   - greet() {return 'Welcome'+this.name;}
+
+// Limitations
+// {{ Assignment won't support - z=10}}
+// {{ Accessing global variables not allowed - ex: window.location.host }}
+
+
+// Property binding - []
+   // using property binding
+   <p [id] = "myId">Hello world</p>
+   
+=================================
+// test.component.ts
+// Inline Tempate
+template: `
+        <div>
+        <p>Hello World</p>
+        <p>{{title}}</p>
+        <p>{{2+5}}</p>
+        Title length: <p>{{title.length}}</p>
+        <h1>{{greet()}}</h1>
+        <!-- {{a=10}} -->
+        <!-- {{window.document.URL}} -->
+        <input type='text' id='input1' placeholder="Enter first name"/>
+        <input type='text' [id]='testId' placeholder="Enter last name"/>
+</div>`,
+
+// Inline Styling:
+  styles: [`
+    p {
+      color: red;
+      font-weight:bold;
+    }
+  `]
+
+=================================
+Bootstrap
+=========
+
+//Step 1:  install bootstrap
+npm install bootstrap
+
+//Step 2: update angular.json with  bootstrap node_modules path in 'styles'
+"styles": [
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+          ],
+
+//Step 3: Restart app.
+
+(OR)
+// update bootstrap node_modules path in 'styles.css' file
+// styles.css
+@import "node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+// restart app
+
+(OR)
+// update bootstrap stylesheet link in index.html file
+// index.html
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<head>
+
+=======================================
+Data Bindings
+=============
+
+1. Interpolation - {{}} 
+    - One way data binding(Component to Template)
+    - Interpolation is used to just display a piece of data in HTML, such as displaying a title or a name.
+    Ex:
+    // test.component.ts
+    title = "Hello World";
+    // test.component.html
+    {{title}}
+   
+2. Property Binding - []
+   - Recomended
+   - Property binding moves a value in one direction, 
+       from a component's property into a target element property. 
+   - Property binding lets us bind a property of a DOM object,
+      example
+       binding hidden property of a DOM object to some data value. 
+       This can let us show or hide a DOM element, or manipulate the DOM in some other way.
+
+     <button [disabled]='isDisabled'>Try Me</button>
+     isDisabled=true;
+
+3. Attribute binding - []
+   - Attribute binding in Angular helps you set values for attributes directly.
+
+   // test.component.html
+   <!--Attribute binding-->
+   attr.colspan="{{colspan}}";
+   (OR)
+   [attr.colspan]="colspan";   
+ 
+   // test.component.ts
+   colspan = 2;
+
+
+
+
+/* html attribute Vs dom property
+   1. Attributes are defined by html whereas properties are defined by DOM
+   2. Attributes initialise DOM properties. Once initialisation complete attribute job is done
+   3. Properties value can change whereas attribute value cannot change
+
+   ** use Attribute binding only when DOM properties not available ex - colspan
+
+   // Ways to work with attribute binding
+   attr.colspan="{{colspan}}"
+   [attr.colspan]="colspan"
+
+*/
+
+
+4. Event Binding - ()
+    - Event binding lets you listen for and respond to user actions such as keystrokes, 
+        mouse movements, clicks, and touches.
+   Ex:
+     // test.component.html
+     <input type="button" value='Incr' (click)="onIncr()"/>{{count}}
+     
+     //test.component.ts
+     count = 0;
+
+     onIncr() {
+       this.count += 1;
+     }
+
+    
+5. class & style binding - [class]
+   - Use class and style bindings to add and remove CSS class names 
+      from an element's class attribute and to set styles dynamically.
+   
+    // Class Binding - [class]
+    // Ex:
+    // test.component.html
+    <p [class]="para">Class binding</p>
+    
+    // test.component.ts
+     para = "p1";
+
+    // test.component.css
+    .p1 {
+      color: red;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    // Style Binding - [style.STYLE]
+    // ex:
+    // test.component.ts
+     para2 = "orange";
+
+    // test.component.html
+    <p [style.color]="para2">Style binding</p>
+
+6. Two way binding - [()] 
+    - data flows in both directions
+      - component to view/template
+      - view/template to component
+
+    - ngModel 
+      - is a directive
+      - binds the value of HTML control(input, select, text area) to application data and vice versa.
+
+    // app.module.ts
+    import { FormsModule } from '@angular/forms';
+    @NgModule({ 
+      imports: [ 
+        FormsModule
+      ]
+    )}
+
+    // app.component.ts
+    name=""
+
+    // app.component.html
+    {{name}}
+    <input type="text" placeholder="enter name" [(ngModel)]="name"/>
+
+
+==================================
+Directives
+==========
+  - Directives are classes that add additional behavior to elements in your Angular applications.
+  - Helps to manage forms, list, styles and what users see.
+
+ Types:
+   1. Component directives
+       Used with a template. This type of directive is the most common directive type.
+   2. Attribute directives
+       Change the appearance or behavior of an element, component, or another directive.
+         ex: 
+           ngClass - Adds and removes a set of CSS classes.
+           ngStyle - Adds and removes a set of HTML styles.
+           ngModel - Adds two-way data binding to an HTML form element.
+   3. Structural directives
+       Change the DOM layout by adding and removing DOM elements.
+         ex: 
+            ngIf      - Conditionally creates or disposes of subviews from the template.
+            ngFor     - Repeat a node for each item in a list.
+            ngSwitch  - A set of directives that switch among alternative views.
+
+/*
+  Structural Directives
+   - ngIf, ngFor, ngSwitch
+*/
+  
+// ngFor
+// test.component.ts
+countries = ['India', 'China', 'Japan', 'Russia', 'Ukraine', Germany]
+
+// test.component.html
+<!--ngFor-->
+<ul *ngFor="let c of countries" class="list-group w-25">
+    <li class="list-group-item">{{c}}</li>
+</ul>
+
+    
+// ngIf
+// test.component.html
+<div>
+    <a *ngIf="!isLogin" href="#" class="link-primary">Login</a>
+    <a *ngIf="isLogin" href="#" class="link-danger ">Logout</a>
+</div>
+      
+// test.component.ts
+isLogin=false
+
+//ngSwitch
+
+// test.component.html
+<ul [ngSwitch]="day">
+        <li *ngSwitchCase='0'>Sunday</li>
+        <li *ngSwitchCase='1'>Monday</li>
+        <li *ngSwitchCase='2'>Tuesday</li>
+        <li *ngSwitchCase='3'>Wednesday</li>
+        <li *ngSwitchCase='4'>Thursday</li>
+        <li *ngSwitchCase='5'>Friday</li>
+        <li *ngSwitchCase='6'>Saturday)</li>
+        <li *ng-switch-default>Oops something went wrong</li>
+    </ul>
+
+// test.component.ts
+day = new Date().getDay(); // returns values 1-7, 1-Monday & 7-Sunday
+
+
+/*
+ Attribute Directives
+*/
+   
+
+
+
+
+===============================================
+Pipes   - |
+======
+https://angular.io/api/common/DatePipe
+
+// lowercase
+{{ 'Angular Pipes' | lowercase}}
+
+// uppercase
+{{ 'Angular Pipes' | uppercase}}
+
+// Title Case Example
+{{ Angular Pipes | titlecase}}
+
+// slice
+{{name | slice: 2}}
+{{name | slice: 2:5}}
+
+// json 
+{{ person | json }}
+
+// numbers
+{{ 10.2345 | number: '1.2-3'}}
+{{ 10.2345 | number: '2.2-4'}}
+{{ 10.2345 | number: '3.1-3'}}
+
+// Percentage
+{{ 0.25 | percent}}
+
+// Currency
+{{ 250 | currency}}
+{{ 250 | currency: 'GBP'}}
+{{ 250 | currency: 'EUR'}}
+{{ 250 | currency: 'GBP' : code}}
+{{123| currency : 'INR' : 'code'}}
+{{123| currency : 'INR'}}
+{{ 100 | currency : 'EUR'}}
+
+// Date
+// https://angular.io/api/common/DatePipe
+
+{{date}}
+{{date | date: 'short'}}
+{{date | date: 'shortDate'}}
+{{date | date: 'shortTime'}}
+
+==============================================================
+Routing
+=======
+
+// Step 1 : Install routing module, if it is not installed at the time of project creation
+// Step 2 : Update route information in routes array in  app-routing.module.ts.
+const routes: Routes = [
+  { path: "", redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'counter', component: ExcounterComponent },
+  { path: 'test', component: TestComponent },
+  { path: '**', component: PagenotfoundComponent },
+];
+
+// step 3: Use <router-outlet> to specify the location to display response
+// app.component.html
+
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
+
+// Step 4:  bind path info with links provided in navbar using 'routerLink'
+ <li class=" nav-item">
+     <a class="nav-link" routerLink="/test">Test</a>
+ </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,6 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent {
+
+  title = 'test component';
+
+  person = {
+    fullName: 'Raj',
+    lastName: 'K'
+  }
+
+  date = new Date();
+
   para = "p1";
 
 

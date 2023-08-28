@@ -17,7 +17,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list'
+
 import { UserService } from './services/user.service';
+import { AddUserComponent } from './add-user/add-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 
 
@@ -29,6 +36,8 @@ import { UserService } from './services/user.service';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
+    AddUserComponent,
+    UpdateUserComponent,
 
   ],
   imports: [
@@ -42,7 +51,11 @@ import { UserService } from './services/user.service';
     MatFormFieldModule,
     MatSelectModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTableModule,
+    MatGridListModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

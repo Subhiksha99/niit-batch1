@@ -13,7 +13,10 @@ export class UsersComponent {
     console.log('constructor');
   }
 
-  users: any = [];
+  //users: any = [];
+
+  dataSource: any = [];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'avatar', 'actions'];
 
   // Get all Users - getAllUsers()
 
@@ -22,7 +25,13 @@ export class UsersComponent {
 
   ngOnInit() {
     console.log('ngOnInit');
-    this.users = this.userService.getAllUsers();
-    console.log(this.users);
+    this.dataSource = this.userService.getAllUsers();
+    console.log(this.dataSource);
+  }
+
+  onDelete(id: number) {
+    console.log(id);
+    this.dataSource = this.userService.deleteUser(id);
+    console.log('userComp', this.dataSource);
   }
 }

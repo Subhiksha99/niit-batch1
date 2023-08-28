@@ -1,0 +1,14 @@
+.example-card {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+mat-divider {
+    margin: 10px;
+}

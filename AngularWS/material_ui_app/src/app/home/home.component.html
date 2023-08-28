@@ -1,0 +1,22 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>
+        <mat-list role="list">
+            <mat-list-item role="listitem">Item 1</mat-list-item>
+            <mat-list-item role="listitem">Item 2</mat-list-item>
+            <mat-list-item role="listitem">Item 3</mat-list-item>
+        </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <mat-grid-list cols="4">
+            <mat-grid-tile *ngFor="let user of users">
+                <mat-card class="example-card">
+                    <img mat-card-image src="{{user.avatar}}" alt="Photo of a Shiba Inu">
+                    <mat-card-header>
+                        <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+                        <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+                    </mat-card-header>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-drawer-content>
+</mat-drawer-container>

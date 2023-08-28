@@ -62,9 +62,26 @@ export class UserService {
   ]
 
   getAllUsers() { return this.users; }
-  getUserById(id: number) { }
+  getUserById(id: number) {
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].id == id) {
+        return this.users[i];
+      }
+    }
+    return {};
+  }
   addUser(user: User) { };
-  deleteUser(id: number) { }
+  deleteUser(id: number) {
+    // splice
+    console.log("service", id)
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].id == id) {
+        this.users.splice(i, 1);
+      }
+    }
+    console.log(this.users);
+    return this.users;
+  }
   updateUser(id: number, user: User) { }
   updateEmail(id: number, email: string) { }
   updateFirstName(id: number, firstName: string) { }

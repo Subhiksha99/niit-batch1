@@ -536,8 +536,13 @@ https://angular.io/api/common/DatePipe
 ==============================================================
 Routing
 =======
+https://angular.io/tutorial/tour-of-heroes/toh-pt5
 
-// Step 1 : Install routing module, if it is not installed at the time of project creation
+// Step 1 : Generate routing module, if it is not installed at the time of project creation
+ng generate module app-routing --flat --module=app
+
+** '--module=app' Tells ng generate to register it in the imports array of the AppModule.
+
 // Step 2 : Update route information in routes array in  app-routing.module.ts.
 const routes: Routes = [
   { path: "", redirectTo: '/home', pathMatch: 'full' },
@@ -559,6 +564,36 @@ const routes: Routes = [
      <a class="nav-link" routerLink="/test">Test</a>
  </li>
 
+
+===========================================
+HttpClientModule
+================
+Step 1: Add HttpClientModule into app.module.ts
+import {HttpClientModule} from '@angular/commmon/http';
+
+imports: [
+   HttpClientModule
+]
+
+Step 2: Create Service with name 'HttpService'
+ng generate service http
+
+Step 3: Inject HttpClient into HttpService created in previous step
+// http.service.ts
+import {HttpClient} from  '@angular/commmon/http';
+
+export class HttpService {
+  constructor(private httpClient: HttpClient) { }
+}
+
+Step 4: Write a method to get users from external rest api in HttpService using HttpClient
+// http.service.ts
+export class HttpService { 
+  private url: string = 'https://reqres.in/api/users?page=1';
+  getUsers() {
+    return this.http.get(this.url);
+  }
+}
 
 
 

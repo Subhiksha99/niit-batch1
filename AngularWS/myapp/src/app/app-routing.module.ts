@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { ExcounterComponent } from './excounter/excounter.component';
 import { TestComponent } from './test/test.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'counter', component: ExcounterComponent },
   { path: 'test', component: TestComponent },
+  { path: 'users', component: UsersComponent },
   { path: '**', component: PagenotfoundComponent },
 ];
 

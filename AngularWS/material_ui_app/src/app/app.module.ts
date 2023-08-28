@@ -19,6 +19,8 @@ import { HomeComponent } from './home/home.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { UserService } from './services/user.service';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import { UserService } from './services/user.service';
     UsersComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,36 @@
+Services:
+-----------
+// create src/app/services folder
+
+// create user service inside 'services' folder
+ng generate service user
+
+// Register/update service with Root module - app.module.ts
+import {UserService} from './services/user.service';
+
+provides = [UserService]
+
+// add data/functions in - user.service.ts
+users=[{}, {}, {}]
+addUser(){}
+deleteUser(id) {}
+updateUser(id, user) {}
+...
+
+// inject user service into component - user.component.ts
+import {UserService} from './services/user.services'
+
+constructor(private userService: UserService) {}
+
+
+//  call service methods to get data from - user.component.ts
+ngOnInit() {
+    this.users = this.userService.getAllUsers();
+}
+
+//  present in html template
+
+<ul *ngFor = "let u of users">
+  <li>{{u.firstName}}<li>
+</ul>
+

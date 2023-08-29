@@ -15,7 +15,10 @@ export class AddUserComponent {
     private userService: UserService,
     private router: Router) { }
 
+
+
   onAddUser(user: User) {
+
     console.log(user);
     this.userService.addUser(user);
     this.router.navigate(['/users']);

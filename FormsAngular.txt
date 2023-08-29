@@ -1,0 +1,175 @@
+Forms:
+======
+Template Driven Form
+========================
+// Step 1 - import and register FormsModule with app.module.ts
+import { FormsModule } from '@angular/forms';
+
+imports [
+  FormsModule
+]
+
+// Step 2 - add.user.component.html
+<form #userAddForm='ngForm' (ngSubmit)='onUserAdd(userAddForm)> 
+   <input type='text' placeholder='Enter first name' name="firstName' ngModel/>
+   <input type='text' placeholder='Enter last name' name="lastName' ngModel/>
+   <input type='email' placeholder='Enter email address' name="email" ngModel/>
+   <input type='text' placeholder='Enter password' name="password' ngModel/>
+   <input type='submit' value='Add'/>
+</form>
+
+** ngForm is a directive convert form into template driven from
+** ngSubmit = controls submit process. ex: performing form validation before sending form data to backend
+** 
+
+// Step 3- add onUserAdd() method in add.user.component.ts
+import {UserService} from './services/user.service;
+
+constructor(private userService:UserService) {}
+
+onUserAdd(user: User) {
+    console.log(user);
+    // call service method to add user obj into Array defined in service
+    userService.addUser(user);
+    // navigate to /users page
+    this.router.navigate('[/users]');
+}
+
+
+ Validations
+===============
+Template driven form validation
+===============================
+<form #userAddForm='ngForm' (ngSubmit)="onUserAdd(userAddForm.value)">
+ <input type='text' required pattern="[a-zA-Z]+$" #firstName="ngModel" name='firstName' ngModel/>
+ <small *ngIf="firstName.invalid&&firstName.touched" style='color:red'>Enter valid firstName</small>
+ <!--Disable button until user enters valid info -->
+ <input type='submit' [disabled]='loginForm.invalid'  >
+</form>
+
+
+html 5 - Validation attributes
+  required
+  maxlength
+  pattern
+  min
+  max
+
+//ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation
+
+// Angular form validation properties
+1. touched/untouched
+   touched   - form field touched
+   untouched - form field untouched
+2. dirty/pristine
+   pristine - form field value not changed.
+   dirty    - form field value changed
+3. valid/invalid
+   valid -  
+   invalid - 
+
+<div>invalid: {{lastName.invalid}}</div>
+<div>valid: {{lastName.valid}}</div>
+<div>touched: {{lastName.touched}}</div>
+<div>untouched:{{ lastName.untouched}}</div>
+<div>pristine: {{lastName.pristine}}</div>
+<div>dirty: {{lastName.dirty}}</div>
+
+
+
+
+Field level validation :
+=========================
+// export ngModel directive into local variable
+<input name="email" type="text" required  #email="ngModel"/>
+
+
+******** Note
+#email="ngMode" - exporting ngModel directive into local/template variable
+
+
+- add below lines of code to display angular properties
+<div>valid: {{email.valid}}</div>
+<div>touched: {{email.touched}}</div>
+
+*****************
+
+// Step 2: Use field level local/template variable to access the validation properties
+<small *ngIf=email.invalid&&email.touched>Enter valid email address</small>
+
+ex:
+<form #loginForm="ngForm" (ngSubmit)=onSubmit()>
+   <input name="email" type="text" required  #email="ngModel" ngModel/>
+   <small *ngIf=email.invalid&&email.touched>Enter valid email address</small>
+</form>
+
+Form level validation :
+========================
+// Step 1: export ngForm directive into local variable #loginForm
+<form #loginForm="ngForm" (ngSubmit)=onSubmit()>...</form>
+
+// Step 2: use form level local/template variable to access validation properties
+<small *ngIf=loginForm.invalid&&loginForm.touched>Enter valid email address</small>
+
+ex:
+<form #loginForm="ngForm" (ngSubmit)=onSubmit()>
+   <input name="email" type="text" required  #email="ngModel" ngModel/>
+   <small *ngIf=loginForm.invalid&&loginForm.touched>Enter valid email address</small>
+</form>
+
+
+// Reactive Forms
+=================
+
+Step 1: Add ReactiveFormsModule in app.module.ts 
+
+import { ReactiveFormsModule } from '@angular/forms';
+ 
+imports: [
+    ReactiveFormsModule,
+  ],
+
+
+
+Step 2: Add form to component
+login.component.html
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <input type='text' name='email' formControlName='email'/>
+  <input type='password' name='password' formControlName='password'/>
+  <input type='submit' value='Login'/>
+</form>
+
+
+** formControlName - is a directive, allows to give name to field and that name can be used in component class.
+** formGroup - allows to give name to form group
+** ngSubmit  - event triggers at the time of form submission.
+
+
+
+Step 3: Building component class
+// login.component.ts
+import { FormControl, FormGroup } from '@angular/forms';
+import { LoginService} from './services/login.service';
+import { Router } from '@angular/router';
+
+// DI - Inject login service into login component
+constructor(private loginService: LoginService) {}
+
+// Read form data with the help of FormGroup
+  loginForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+  })
+
+// Send form data to db once user click on submit button
+onSubmit() {
+    // code to call service method for sending form data to backend
+    loginService.login(this.loginForm.value);
+    this.router.navigate(['/home']);
+}
+
+
+
+					                                                     ***
+
+

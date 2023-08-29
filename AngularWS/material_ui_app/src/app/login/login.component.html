@@ -7,15 +7,15 @@
         <form class="example-form">
             <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
-                <input matInput type='email' placeholder="Enter email address">
+                <input matInput type='email' name='email' ngModel placeholder="Enter email address">
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Password</mat-label>
-                <input matInput type='password' placeholder="Enter password">
+                <input matInput type='password' name='password' ngModel placeholder="Enter password">
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Roles</mat-label>
-                <mat-select>
+                <mat-select name="role" ngModel>
                     <mat-option *ngFor="let role of roles" [value]="role.value">
                         {{role.viewValue}}
                     </mat-option>

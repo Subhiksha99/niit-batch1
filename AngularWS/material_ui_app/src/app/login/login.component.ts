@@ -18,4 +18,8 @@ export class LoginComponent {
     { value: 'admin', viewValue: 'Admin' },
     { value: 'manager', viewValue: 'Manager' },
   ];
+
+  onLogin() {
+    //console.log(login);
+  }
 }

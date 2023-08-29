@@ -13,7 +13,6 @@ export class UsersComponent {
     console.log('constructor');
   }
 
-  //users: any = [];
 
   dataSource: any = [];
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'avatar', 'actions'];
@@ -31,7 +30,8 @@ export class UsersComponent {
 
   onDelete(id: number) {
     console.log(id);
-    this.dataSource = this.userService.deleteUser(id);
+    this.userService.deleteUser(id);
+    this.dataSource = this.userService.getAllUsers();
     console.log('userComp', this.dataSource);
   }
 }

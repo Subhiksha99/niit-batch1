@@ -4,26 +4,27 @@
     </mat-card-header>
     <mat-divider></mat-divider>
     <mat-card-content>
-        <form class="example-form">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="example-form">
             <mat-form-field class="example-full-width">
                 <mat-label>Id</mat-label>
-                <input value={{user.id}} matInput>
+                <input formControlName="id" value={{user.id}} matInput readonly="true">
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>First Name</mat-label>
-                <input matInput value={{user.firstName}} placeholder="Enter first name">
+                <input matInput formControlName="firstName" value={{user.firstName}} placeholder="Enter first name">
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Last Name</mat-label>
-                <input matInput value={{user.lastName}} placeholder="Enter last name">
+                <input matInput formControlName="lastName" value={{user.lastName}} placeholder="Enter last name">
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
-                <input matInput type='email' value={{user.email}} placeholder="Enter email address">
+                <input matInput formControlName="email" type='email' value={{user.email}}
+                    placeholder="Enter email address">
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Avatar</mat-label>
-                <input matInput value={{user.avatar}} placeholder="Enter avatar url">
+                <input matInput formControlName="avatar" value={{user.avatar}} placeholder="Enter avatar url">
             </mat-form-field>
 
             <button mat-raised-button color="primary" class="example-full-width">Update</button>

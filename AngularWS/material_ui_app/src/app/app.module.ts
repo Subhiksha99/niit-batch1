@@ -25,6 +25,8 @@ import { MatListModule } from '@angular/material/list'
 import { UserService } from './services/user.service';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -55,7 +57,9 @@ import { UpdateUserComponent } from './update-user/update-user.component';
     MatTableModule,
     MatGridListModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

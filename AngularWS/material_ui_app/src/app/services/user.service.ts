@@ -1,12 +1,6 @@
 import { Injectable } from '@angular/core';
+import User from '../user';
 
-interface User {
-  id: number;
-  email: string;
-  firstName: string;
-  lastName: string;
-  avatar: string;
-}
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +9,7 @@ export class UserService {
 
   constructor() { }
 
+  id: number = 8;
   // Ctrl +d - edit multiple fields
   users: User[] = [
     {
@@ -70,7 +65,13 @@ export class UserService {
     }
     return {};
   }
-  addUser(user: User) { };
+  addUser(user: User) {
+    console.log("before adding id: ", user)
+    user.id = this.id;
+    this.id++;
+    console.log("after adding id: ", user);
+    this.users.push(user);
+  };
   deleteUser(id: number) {
     // splice
     console.log("service", id)
@@ -82,7 +83,12 @@ export class UserService {
     console.log(this.users);
     return this.users;
   }
-  updateUser(id: number, user: User) { }
+  updateUser(user) {
+    console.log(user)
+    this.users = this.users.map(u => u.id == user.id ? user : u);
+
+    console.log(this.users);
+  }
   updateEmail(id: number, email: string) { }
   updateFirstName(id: number, firstName: string) { }
 

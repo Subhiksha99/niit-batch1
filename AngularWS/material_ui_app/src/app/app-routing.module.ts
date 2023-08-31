@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './users/users.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { ParentComponent } from './parent/parent.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'users', component: UsersComponent },
   { path: 'user/add', component: AddUserComponent },
-  { path: 'user/update/:id', component: UpdateUserComponent }
+  { path: 'user/update/:id', component: UpdateUserComponent },
+  { path: 'parent', component: ParentComponent }
 
 
 ];

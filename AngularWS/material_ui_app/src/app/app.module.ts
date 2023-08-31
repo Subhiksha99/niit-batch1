@@ -26,6 +26,8 @@ import { UserService } from './services/user.service';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 
 
 
@@ -40,6 +42,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     AddUserComponent,
     UpdateUserComponent,
+    ParentComponent,
+    ChildComponent,
 
   ],
   imports: [

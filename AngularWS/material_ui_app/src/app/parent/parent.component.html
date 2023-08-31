@@ -1,0 +1,6 @@
+<p>parent works!</p>
+<!--Without data from child-->
+<!-- <app-child (greetEvent)="greet()" [customers]="customers"></app-child> -->
+
+<!--With data from child-->
+<app-child (greetEvent)="greet($event)" [customers]="customers"></app-child>

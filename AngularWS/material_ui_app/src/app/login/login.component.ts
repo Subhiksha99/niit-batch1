@@ -30,7 +30,6 @@ export class LoginComponent {
     role: ['', Validators.required]
   })
 
-
   onSubmit() {
     console.log("onSubmit");
     console.log(this.loginForm.value);

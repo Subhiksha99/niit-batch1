@@ -1,0 +1,7 @@
+<p>child component</p>
+<ul *ngFor="let c of customers">
+    <li>{{c.id}}</li>
+    <li>{{c.name}}</li>
+</ul>
+
+<button (click)="callParentGreet()">Greet</button>

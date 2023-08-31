@@ -4,24 +4,33 @@
     </mat-card-header>
     <mat-divider></mat-divider>
     <mat-card-content>
-        <form class="example-form">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="example-form">
             <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
-                <input matInput type='email' name='email' ngModel placeholder="Enter email address">
+                <input formControlName='email' matInput type='email' name='email' placeholder="Enter email address">
+                <small *ngIf="loginForm.get('email').invalid&&loginForm.get('email').touched" style='color:red'>Enter
+                    valid
+                    email address</small>
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Password</mat-label>
-                <input matInput type='password' name='password' ngModel placeholder="Enter password">
+                <input formControlName='password' matInput type=' password' name='password'
+                    placeholder="Enter password">
+                <small *ngIf="loginForm.get('password').invalid&&loginForm.get('password').touched"
+                    style='color:red'>Password lengh should be 3 chars.Allowed chars are alphabets and numbers</small>
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Roles</mat-label>
-                <mat-select name="role" ngModel>
+                <mat-select name="role" name="role" formControlName="role">
                     <mat-option *ngFor="let role of roles" [value]="role.value">
                         {{role.viewValue}}
                     </mat-option>
                 </mat-select>
+                <small *ngIf="loginForm.get('role').invalid&&loginForm.get('role').touched" style='color:red'>
+                    Please select role</small>
             </mat-form-field>
-            <button mat-raised-button color="primary" class="example-full-width">Login</button>
+            <button [disabled]="loginForm.invalid" mat-raised-button color="primary"
+                class="example-full-width">Login</button>
         </form>
     </mat-card-content>
 </mat-card>

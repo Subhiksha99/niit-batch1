@@ -1,5 +1,6 @@
 <a routerLink="/posts/add">add</a>
-<table>
+<table class="table">
+    <caption>Posts</caption>
     <thead>
         <tr>
             <th>userId</th>
@@ -15,8 +16,8 @@
             <td>{{post.id}}</td>
             <td>{{post.title}}</td>
             <td>{{post.body}}</td>
-            <td><a href="#">Edit</a></td>
-            <td><button (click)="onDelete(post.id)">Delete</button></td>
+            <td><a href="#" class="btn btn-secondary">Edit</a></td>
+            <td><button (click)="onDelete(post.id)" class="btn btn-danger">Delete</button></td>
         </tr>
     </tbody>
 </table>

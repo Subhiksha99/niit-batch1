@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'http_client_demo';
+  name = 'Title';
+
+  updateName() {
+    console.log("updateName");
+  }
+
+
+
 }

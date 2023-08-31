@@ -1,0 +1,22 @@
+<form class="container">
+    <!-- firstName in [(ngModel)] is function not private property-->
+    <input type="text" class="form-control w-50 mt-5" name="name" [(ngModel)]="firstName"
+        placeholder="Enter first name." />
+    <h3>{{firstName}}</h3>
+</form>
+
+<hr />
+<form class="container border p-3 mt-5 w-50">
+    <!-- firstName in [(ngModel)] is function not private property-->
+    <div class="mb-3">
+        <input #emailRef type="email" class="form-control" name="email" [(ngModel)]="email"
+            placeholder="Enter email." />
+    </div>
+    <div class="mb-3">
+        <input type="password" class="form-control" name="password" [(ngModel)]="password"
+            placeholder="Enter password." />
+    </div>
+    <div class="mb-3">
+        <input type="submit" value="Login" class="btn btn-secondary" />
+    </div>
+</form>

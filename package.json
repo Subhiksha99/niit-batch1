@@ -20,6 +20,7 @@
   },
   "description": "",
   "dependencies": {
-    "@angular/cli": "^16.2.0"
+    "@angular/cli": "^16.2.0",
+    "jasmine": "^5.1.0"
   }
 }

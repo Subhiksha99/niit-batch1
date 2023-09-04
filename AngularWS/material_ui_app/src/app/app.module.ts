@@ -21,6 +21,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list'
+import { HttpClientModule } from '@angular/common/http';
 
 import { UserService } from './services/user.service';
 import { AddUserComponent } from './add-user/add-user.component';
@@ -28,8 +29,8 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
-
-
+import { PostComponent } from './post/post.component';
+import { PostService } from './services/post.service';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { ChildComponent } from './child/child.component';
     UpdateUserComponent,
     ParentComponent,
     ChildComponent,
-
+    PostComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +64,10 @@ import { ChildComponent } from './child/child.component';
     MatSidenavModule,
     MatListModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

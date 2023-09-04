@@ -56,5 +56,9 @@ export class PostService {
     return this.http.put(`${this.baseUrl}/posts/${post.id}`, body, { headers: this.httpHeaders })
   }
 
+  // GET - post by id
+  getPostById(id: number) {
+    return this.http.get(`${this.baseUrl}/posts`);
+  }
 
 }

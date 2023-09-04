@@ -1,0 +1,7 @@
+<form [formGroup]="postAddForm" (ngSubmit)="onSubmit()">
+    <input formControlName="userId" type="number" name="userId" placeholder="Enter user id" /><br />
+    <input formControlName="id" type="number" name="id" placeholder="Enter post id" /><br />
+    <input formControlName="title" type="text" name="title" placeholder="Enter post title" /><br />
+    <input formControlName="body" type="text" name="body" placeholder="Enter post body" /><br />
+    <input type="submit" value="Add" />
+</form>

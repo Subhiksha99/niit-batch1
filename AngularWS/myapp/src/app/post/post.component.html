@@ -1,0 +1,23 @@
+<a routerLink="/posts/add">add</a>
+<table class="table">
+    <caption>Posts</caption>
+    <thead>
+        <tr>
+            <th>userId</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th colspan="2">Actions</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let post of posts">
+        <tr>
+            <td>{{post.userId}}</td>
+            <td>{{post.id}}</td>
+            <td>{{post.title}}</td>
+            <td>{{post.body}}</td>
+            <td><a href="#" class="btn btn-secondary">Edit</a></td>
+            <td><button (click)="onDelete(post.id)" class="btn btn-danger">Delete</button></td>
+        </tr>
+    </tbody>
+</table>

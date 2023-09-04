@@ -1,0 +1,60 @@
+<form class="mx-auto border p-2 mt-2 shadow p-3 mb-5 bg-body-tertiary rounded"
+    style="min-width:300px; max-width: 600px;">
+    <p class="h5 bg-secondary p-2 text-light text-center mb-1">Register</p>
+    <label class="form-label">Username</label><br />
+    <input class="form-control" type="text" placeholder="Enter name" size="20" maxlength="20" required />
+    <br />
+    <div class="mb-1">
+        <label class="form-label">Password</label><br />
+        <input class="form-control" type="password" pattern="[a-zA-Z0-9]{8}" required />
+    </div>
+    <div class="mb-1">
+        <label class="form-label">DOB</label><br />
+        <input class="form-control" type="date" />
+    </div>
+    <div class="mb-1">
+        <label class="form-label">Email</label><br />
+        <input class="form-control" type="email" />
+    </div>
+    <div class="mb-1">
+        <label class="form-label">Address</label> <br />
+        <textarea cols="20" rows="3" class="form-control" placeholder="Enter your address"></textarea>
+    </div>
+    <div class="mb-1">
+        <label class="form-check-label">Gender</label> <br />
+        <input class="form-check-input me-2" type="radio" name="gender" />
+        <label class="form-check-label">Male</label>
+        <input class="form-check-input ms-5" type="radio" name="gender" />
+        <label class="form-check-label ms-2">Female</label>
+    </div>
+    <label class="form-label">Select your country</label>
+    <select class="form-select form-select-lg mb-2">
+        <option>Country Name</option>
+        <option selected>India</option>
+        <option>China</option>
+        <option>Japan</option>
+        <option>UK</option>
+    </select>
+    <div class="mb-3">
+
+        <label class="form-check-label ms-2">
+            <input class="form-check-input" type="checkbox" />
+            I agree terms and conditions</label><br />
+
+        <label class="form-check-label ms-2">
+            <input class="form-check-input" type="checkbox" />
+            Lorem ipsum dolor sit amet consectetur.
+        </label>
+
+        <label class="form-check-label ms-2">
+            <input class="form-check-input" type="checkbox" />
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio, magni?
+        </label>
+    </div>
+    <div class="d-grid gap-2">
+        <input class="btn btn-secondary" type="button" value="Submit" />
+    </div>
+    <small class="d-flex justify-content-center mt-2">
+        Already have an account? <span><a href="#">Sign in</a></span>
+    </small>
+</form>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Post } from '../model/post';
 
 // HttpClient - Get, Post, Put, Delete, Patch requests can send
 
@@ -42,7 +43,7 @@ export class PostService {
   // POST  - add post
   // http.post(url, body, header-options)
   //POST -	/posts
-  addPost(post) {
+  addPost(post: Post) {
     let body = JSON.stringify(post);
     return this.http.post(`${this.baseUrl}/posts`, body, { headers: this.httpHeaders })
   }
@@ -50,7 +51,7 @@ export class PostService {
   // PUT - Update Post
   // PUT	/posts/1
   // put(url, body, options)
-  updatePost(post: any) {
+  updatePost(post: Post) {
     let body = JSON.stringify(post);
     return this.http.put(`${this.baseUrl}/posts/${post.id}`, body, { headers: this.httpHeaders })
   }

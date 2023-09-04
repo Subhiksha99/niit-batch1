@@ -1,0 +1,41 @@
+Jasmine
+  is a behavior-driven development framework for testing JavaScript code. 
+
+// Create angular app
+ng new jasmine-karma-testing
+
+
+// install
+npm install --save -dev jasmine
+
+
+// run tc's
+//npm test
+ng test
+
+
+** To generate reporter & html reporter add 'codeCoverage' config in 'angular.json'
+
+// angular.json
+   test: {
+      "scripts":[],
+      "codeCoverage":true ;// add this line
+   }
+
+
+Output -Terminal -called as reporter
+======
+TOTAL: 1 SUCCESS
+
+=============================== Coverage summary ===============================
+Statements   : 36.36% ( 4/11 )
+Branches     : 100% ( 0/0 )
+Functions    : 20% ( 1/5 )
+Lines        : 36.36% ( 4/11 )
+================================================================================
+
+
+** Coverage folder will be created under project. under that we can find html report.
+
+
+                                        ***

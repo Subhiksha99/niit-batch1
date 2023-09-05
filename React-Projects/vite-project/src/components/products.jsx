@@ -251,12 +251,12 @@ const Products = () => {
     return (
         <div className='mt-5'>
             <div className='row'>
-                <div className='col-3'>
+                <div className='col-sm-3 col-xs-12'>
                     <ul className="list-group shadow">
                         {categories.map(c => (<li className="list-group-item" key={c}>{c}</li>))}
                     </ul>
                 </div>
-                <div className='col-9'>
+                <div className='col-sm-9 col-xs-12'>
                     <div className="row">
                         {productList.map(p => (
                             <div key={p.id} className='col-lg-3 col-md-4 col-sm-6 col-xm-12 d-flex align-items-stretch mb-3'>

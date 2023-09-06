@@ -1,0 +1,124 @@
+// component interaction
+Parent.jsx
+ import Child from './child';
+  
+ //state
+ const [count, setCount] = useState(0);
+
+ // function to update state
+ const incr = () => {
+    setCount(count + 1);
+ }
+ 
+ return (
+
+	<div>
+           <Child count={count} incr={incr} />
+        </div>
+ )
+---------------
+Child.jsx
+
+export default Child = (props) => {
+
+   return (
+        <p>{props.count}</p>
+	<button onClick={props.incr}>Increment</button>
+   )
+}
+
+-----------
+// Upshifting
+home.jsx
+
+       App.jsx - root component - (count) -empDetails
+
+Product      Login       Register       Nav     Home    Employee
+
+ProductCard
+  
+  ChildComp
+  
+    GrandChildComp
+
+----------------
+// topics covered
+- conditional rendering
+{flag && <li>Login</li>} - short circuit evaluation
+{flag ? <li>Logout</li>: <li>Login</li>} - ternary operator
+
+- component interaction
+  // Parent.jsx
+import Child from 'child';
+const [count, setCount] = useState(0);
+
+incr = ()={
+    setCount(count+1);
+}
+
+<Child count={count} incr={incr}/>
+
+
+// Child.jsx
+const Child = (props) => {
+    console.log(props.count);
+}
+
+upshift
+- routing
+  // step 1
+  npm i -D react-router-dom
+  
+  // step 2
+  App.jsx
+  <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path='' element={<Home />} />,
+        <Route path='login' element={<Login />} />,
+        <Route path='products' element={<Products />} />,
+        <Route path='counter' element={<Counter />} />,
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </BrowserRouter>
+
+    // Step 3
+    // Nav.jsx - update links
+    <li className="nav-item">
+       <NavLink className="nav-link" to="/products">Products</NavLink>
+    </li>
+
+- Reading data from Forms
+// below properties need to be configured in each and every field of form - two binding
+onChange - handleChange  - template ----> state
+name - to read values entered by user.
+value  - OneWaybinding - state---->template
+
+--------------------------------
+
+export class UserService {
+Users =[],
+
+User = {
+   fullName
+   email
+   contact
+   password
+}
+
+//Register -  get user info from register form and add into Users array using userAdd()
+// redirect user to Login page
+ addUser(user) {
+    this.Users.push(user);
+ }
+
+// Login
+ login(formUser) {
+    // find user info from Users array using formUser
+    // if user not found - return 'user not found'
+    // if user is present
+    //   verify formUser email & password with dbUser
+    //     if both are mathcing redirect user to home page
+    //      else return login page
+ }
+}

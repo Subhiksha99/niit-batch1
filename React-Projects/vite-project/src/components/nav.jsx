@@ -1,11 +1,13 @@
 // imr
-import React from 'react';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 // sfc - stateless functional component
 // select text to be modified + (Ctrl+d)
 
 export function Nav() {
 
+    const [isLogin, setIsLogin] = useState(false);
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -17,22 +19,38 @@ export function Nav() {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="#">Home</a>
+                                <NavLink className="nav-link active" aria-current="page" to="#">Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Products</a>
+                                <NavLink className="nav-link" to="/products">Products</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Login</a>
+                                <NavLink className="nav-link" to="/counter">Counter</NavLink>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" aria-disabled="true">Register</a>
-                            </li>
+                        </ul>
+                        <ul className='navbar-nav ms-auto'>
+                            {
+                                isLogin ?
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/logout">Logout</NavLink>
+                                    </li>
+                                    :
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" to="/login">Login</NavLink>
+                                    </li>
+
+                            }
+                            {/* short Circuit Evaluation */}
+                            {!isLogin && <li className="nav-item">
+                                <NavLink className="nav-link" to="/register">Register</NavLink>
+                            </li>}
+
+
                         </ul>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </nav >
+        </div >
     )
 }
 

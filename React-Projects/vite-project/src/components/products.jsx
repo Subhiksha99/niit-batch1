@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { products } from '../assets/data/products';
+import ProductCard from './productCard';
 
 const Products = () => {
 
@@ -8,6 +9,7 @@ const Products = () => {
     const [categories, setCategories] = useState([
         "men's clothing", "jewelery", "electronics", "women's clothing"
     ])
+
 
     return (
         <div className='mt-5'>
@@ -20,17 +22,8 @@ const Products = () => {
                 <div className='col-sm-10 col-xs-12'>
                     <div className="row">
                         {productList.map(p => (
-                            <div key={p.id} className='col-lg-3 col-md-4 col-sm-6 col-xm-12 d-flex align-items-stretch mb-3'>
-                                <div className="card shadow p-2" >
-                                    <img src={p.image} style={{ height: "150px" }} className="card-img-top" alt={p.title} />
-                                    <div className="card-body" style={{ display: "flex", flexDirection: "column" }}>
-                                        <h6 className="card-title">{p.title}</h6>
-                                        <p className="card-text text-truncate">{p.description}</p>
-                                        <div className='d-grid gap-2 mt-auto'>
-                                            <a href="#" className="btn btn-secondary">More Details</a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div key={p.id} className='col-lg-3 col-md-4 col-sm-6 col-xm-12 '>
+                                <ProductCard product={p} />
                             </div>
                         ))}
                     </div>

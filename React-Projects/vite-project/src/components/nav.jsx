@@ -1,16 +1,17 @@
 // imr
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { ReactSession } from 'react-client-session';
 
 // sfc - stateless functional component
 // select text to be modified + (Ctrl+d)
 
-export function Nav() {
+export function Nav(props) {
 
-    const [isLogin, setIsLogin] = useState(false);
+
     return (
         <div>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <nav className="navbar navbar-expand-lg bg-body-tertiary" >
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">Navbar</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,22 +31,21 @@ export function Nav() {
                         </ul>
                         <ul className='navbar-nav ms-auto'>
                             {
-                                isLogin ?
+                                props.user ?
                                     <li className="nav-item">
                                         <NavLink className="nav-link" to="/logout">Logout</NavLink>
                                     </li>
                                     :
-                                    <li className="nav-item">
-                                        <NavLink className="nav-link" to="/login">Login</NavLink>
-                                    </li>
+                                    <React.Fragment>
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" to="/login">Login</NavLink>
+                                        </li>
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link" to="/register">Register</NavLink>
+                                        </li>
+                                    </React.Fragment>
 
                             }
-                            {/* short Circuit Evaluation */}
-                            {!isLogin && <li className="nav-item">
-                                <NavLink className="nav-link" to="/register">Register</NavLink>
-                            </li>}
-
-
                         </ul>
                     </div>
                 </div>

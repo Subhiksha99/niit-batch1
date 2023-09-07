@@ -1,16 +1,19 @@
-// imrc
-import React, { Component } from 'react'
+// imr
+import React, { useState } from 'react'
+import UserService from '../services/UserService';
+import { Link, useNavigate } from 'react-router-dom';
 
-class Login extends Component {
-    state = {
-        user: {
-            email: '',
-            password: ''
-        }
-    }
+// sfc
+const Login = (props) => {
+    const [user, setUser] = useState({
+        email: '',
+        password: '',
+        role: ''
+    })
 
+    const navigate = useNavigate();
     // handle change method - to capture form data
-    handleChange = (event) => {
+    const handleChange = (event) => {
         //console.log(event);
         // name of the field user selected
         console.log(event.target.name);
@@ -19,45 +22,61 @@ class Login extends Component {
         console.log(event.target.value);
 
         // copy user object info into loginUser
-        const loginUser = { ...this.state.user };
+        const loginUser = { ...user };
 
         // Update form data entered by user in loginUser object
         loginUser[event.target.name] = event.target.value;
 
         // Update user property defined in state object with loginUser data
-        this.setState({ user: loginUser });
+        setUser(loginUser);
     }
 
-    handleSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         console.log("handleSubmit");
-        console.log(this.state.user);
+        console.log(user);
 
         // logic to authenticate user
-
+        const res = UserService.login(user);
+        if (res.isLogin) {
+            console.log(res);
+            props.updateUserState(res);
+            console.log("Login success");
+            navigate('/');
+        } else {
+            console.log(res);
+            console.log("Login Failed");
+            return;
+        }
     }
-    render() {
-        return (
-            <div className='mx-auto border p-3 mt-5' style={{ minWidth: "300px", maxWidth: "600px" }}>
-                <h4>Login</h4>
-                <hr />
-                <form onSubmit={this.handleSubmit}>
-                    <div className="mb-3">
-                        <label forHtml="exampleInputEmail1" className="form-label">Email address</label>
-                        <input onChange={this.handleChange} value={this.state.user.email} name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
 
-                    </div>
-                    <div className="mb-3">
-                        <label forHtml="exampleInputPassword1" className="form-label">Password</label>
-                        <input onChange={this.handleChange} value={this.state.user.password} name="password" type="password" className="form-control" id="exampleInputPassword1" />
-                    </div>
-                    <div class="d-grid gap-2">
-                        <button type="submit" className="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
-        );
-    }
+    return (
+        <div className='mx-auto border p-3 mt-5' style={{ minWidth: "300px", maxWidth: "600px" }}>
+            <h4>Login</h4>
+            <hr />
+            <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                    <input onChange={handleChange} value={user.email} name="email" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                    <input onChange={handleChange} value={user.password} name="password" type="password" className="form-control" id="exampleInputPassword1" />
+                </div>
+                <select onChange={handleChange} value={user.role} name="role" className="form-select" aria-label="Default select example">
+                    <option defaultValue="Select role">Select role</option>
+                    <option value="customer">Customer</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <div className="d-grid gap-2 mt-3">
+                    <button type="submit" className="btn btn-secondary">Submit</button>
+                </div>
+            </form>
+            <small>Don't have an account? Click <span><Link to="/register">here</Link> to register.</span></small>
+        </div>
+    );
 }
+
 
 export default Login;

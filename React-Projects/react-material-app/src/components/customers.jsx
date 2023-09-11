@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
 import {
     Table,
     TableBody,
@@ -17,8 +18,30 @@ import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Customers = () => {
+
+    const [customers, setCustomers] = useState([]);
+
+    // useEffect(()=>{},[])
+    // axios.get(url)
+    // axios.post(url, obj)
+    // axios.delete(url+id);
+    // axios.put(url, obj)
+
+    useEffect(() => {
+        axios.get('https://reqres.in/api/users')
+            .then((response) => {
+                console.log(response.data.data);
+                setCustomers(response.data.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, [])
+
+    /*
     const customers = [
         {
             "id": 7,
@@ -42,10 +65,24 @@ const Customers = () => {
             "avatar": "https://reqres.in/img/faces/9-image.jpg"
         }
     ];
+*/
 
+    const handleDelete = (id) => {
+        // send  delete req to delete user based on id
+        //axios.delete('https://reqres.in/api/delete/' + id);
+        axios.delete(`https://reqres.in/api/delete/${id}`)
+            .then((response) => {
+                console.log(response);
+                // delete user from table in frontend after getting success response
+                let newCustomers = customers.filter(c => c.id !== id);
+                setCustomers(newCustomers);
+            }).catch((error) => {
+                console.log(error);
+            });
+    }
     return (
         <Container maxWidth="xl" sx={{ marginTop: '25px' }}>
-            <Button component={Link} to="/user/add" variant="contained" sx={{ marginBottom: "15px", float: "right" }}>Add User</Button>
+            <Button component={Link} to="/customer/add" variant="contained" sx={{ marginBottom: "15px", float: "right" }}>Add User</Button>
             <TableContainer component={Paper} elevation={3} >
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
@@ -82,12 +119,11 @@ const Customers = () => {
                                 <TableCell align="left">{c.email}</TableCell>
                                 <TableCell align="left">
                                     <IconButton aria-label="delete">
-                                        <DeleteIcon />
+                                        <DeleteIcon onClick={() => handleDelete(c.id)} />
                                     </IconButton>
-                                    <IconButton aria-label="edit" sx={{ marginLeft: "10px" }}>
+                                    <IconButton component={Link} to={`/customer/update/${c.id}`} aria-label="edit" sx={{ marginLeft: "10px" }}>
                                         <EditTwoToneIcon />
                                     </IconButton>
-
                                 </TableCell>
                             </TableRow>
                         ))}

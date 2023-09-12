@@ -8,6 +8,7 @@ import Register from './components/register';
 import Home from './components/home';
 import CustomerAdd from './components/customerAdd';
 import UpdateCustomer from './components/updateCustomer';
+import Counter from './components/counter';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/customers" element={<Customers />} />,
         <Route path="/login" element={<Login />} />,
         <Route path="/register" element={<Register />} />,
+        <Route path="/counter" element={<Counter />} />,
         <Route path="/customer/update/:id" element={<UpdateCustomer />} />
         <Route path="/customer/add" element={< CustomerAdd />} />,
       </Routes>

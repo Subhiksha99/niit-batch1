@@ -39,7 +39,7 @@ const CustomerAdd = () => {
         <Grid container spacing={2} >
 
             <Grid component={Paper} item p={3} xs={4} sx={{ marginLeft: 'auto', marginRight: 'auto', marginTop: "25px" }}>
-                <Typography variant="h6" sx={{ color: purple.A200, marginBottom: '10px' }} >Add User</Typography>
+                <Typography variant="h6" sx={{ color: purple.A200, marginBottom: '10px' }} >Add Customer</Typography>
                 <hr />
                 <Box
                     component="form"

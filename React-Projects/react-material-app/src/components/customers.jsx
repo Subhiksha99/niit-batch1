@@ -82,7 +82,7 @@ const Customers = () => {
     }
     return (
         <Container maxWidth="xl" sx={{ marginTop: '25px' }}>
-            <Button component={Link} to="/customer/add" variant="contained" sx={{ marginBottom: "15px", float: "right" }}>Add User</Button>
+            <Button component={Link} to="/customer/add" variant="contained" sx={{ marginBottom: "15px", float: "right" }}>Add Customer</Button>
             <TableContainer component={Paper} elevation={3} >
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>

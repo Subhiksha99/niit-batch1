@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import Nav from './components/nav'
 import { Routes, Route } from 'react-router-dom'
-import Customers from './components/customers';
-import Products from './components/products';
 import Login from './components/login';
 import Register from './components/register';
 import Home from './components/home';
+
 import CustomerAdd from './components/customerAdd';
 import UpdateCustomer from './components/updateCustomer';
 import Counter from './components/counter';
+import Customers from './components/customers';
+import Products from './components/products';
+
 
 function App() {
   return (

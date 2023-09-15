@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import rootReducer from "./reducers/rootReducer";
 import { Provider } from "react-redux";
+import { BrowserRouter } from 'react-router-dom';
 
 // Thunk import statements
 import thunk from "redux-thunk";
@@ -32,7 +33,9 @@ const store = createStore(
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
 )

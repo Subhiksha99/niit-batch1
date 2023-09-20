@@ -63,8 +63,8 @@ const Login = (props) => {
         if (errors != null) return;
 
         // logic to send login details to backend for authentication
-
         console.log("No form field errors");
+
         // if (!customer.email.includes('@')) {
         //     console.log("Enter valid email address");
         //     let newErrors = { ...errors };

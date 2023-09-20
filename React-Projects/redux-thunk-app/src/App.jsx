@@ -1,13 +1,18 @@
-import React, { useCallback, useState, memo } from 'react'
+import React, { useCallback, useState, lazy } from 'react'
 import Products from './components/products'
 import Home from './components/home';
 import ProductDetails from './components/productDetails';
 import Counter from './components/counter';
 import { Routes, Route } from 'react-router-dom';
-import Login from './components/login';
+//import Login from './components/login';
+import LazyLoading from './components/lazyLoading';
 
+// Dynamic Loading
+//const LazyLoading = lazy(() => import('./components/lazyLoading'));
+const Login = lazy(() => import('./components/login'));
 
-function App() {
+const App = () => {
+
   console.log("App - Parent Component")
   // Define state
   const [count, setCount] = useState(0);
@@ -38,7 +43,6 @@ function App() {
     setIsLogin(!isLogin);
   };
 
-
   return (
     <>
       < Routes >
@@ -52,12 +56,13 @@ function App() {
             updateStepValue={handleStepValue}
           />
         } />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<React.Suspense fallback="Loading..."><Login /></React.Suspense>} />
         <Route path='/product/:id' element={<ProductDetails />} />
         <Route path='/products' element={<Products />} />
+        <Route path="/lazy-loading" element={<React.Suspense fallback="Loading..."><LazyLoading /></React.Suspense>} />
       </Routes >
     </>
-  )
+  );
 }
 
 export default App;

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="emp1" class="org.example.Employee">
+        <constructor-arg value="1001" type="int" /> <!-- primitive data type -->
+        <constructor-arg value="Ram" />  <!-- String data type -->
+        <constructor-arg value="9999911111" />  <!-- String data type -->
+        <constructor-arg ref="addr"/>
+    </bean>
+    <bean id="emp2" class="org.example.Employee">
+        <constructor-arg value="1002" type="int" /> <!-- primitive data type -->
+        <constructor-arg value="Sam" />  <!-- String data type -->
+        <constructor-arg value="9999922222" />  <!-- String data type -->
+        <constructor-arg ref="addr2" />
+    </bean>
+    <bean id="addr" class="org.example.Address">
+        <constructor-arg value="3001" type="int" /> <!-- primitive data type -->
+        <constructor-arg value="231A" />  <!-- String data type -->
+        <constructor-arg value="Chennai" />  <!-- String data type -->
+    </bean>
+    <bean id="addr2" class="org.example.Address">
+        <constructor-arg value="3002" type="int" /> <!-- primitive data type -->
+        <constructor-arg value="456B" />  <!-- String data type -->
+        <constructor-arg value="Bengaluru" />  <!-- String data type -->
+    </bean>
+
+
+
+</beans>

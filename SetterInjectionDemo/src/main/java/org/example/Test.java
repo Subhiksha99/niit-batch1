@@ -1,6 +1,5 @@
 package org.example;
 
-import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,16 +15,13 @@ public class Test {
 
         // get bean from container
         Employee e1= (Employee)context.getBean("emp1");
-//        Employee e2= (Employee)context.getBean("emp2");
-//
-//        // perform operations using bean
-//        System.out.println(e1);
-//        System.out.println(e2);
-//
-//        // update e1 details
-//        e1.setContactNo("9999911112");
+        Employee e2= (Employee)context.getBean("emp2");
 
+        // perform operations using bean
         System.out.println(e1);
+        System.out.println(e2);
+
+
 
     }
 }

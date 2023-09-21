@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>AnnotationDemo</artifactId>
+    <artifactId>JavaBasedConfigDemo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -18,14 +18,15 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>5.3.26</version>
+            <version>5.3.6</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.3.26</version>
+            <version>5.3.6</version>
         </dependency>
     </dependencies>
+
 
 </project>

@@ -11,6 +11,8 @@ public class Employee {
     private String empName;
     private String contactNo;
 
+    // Field Injection
+    @Autowired
     private Address address;
 
     // constructors
@@ -22,6 +24,12 @@ public class Employee {
         this.empName = empName;
         this.contactNo = contactNo;
         this.address = address;
+    }
+
+    // Constructor Injection
+    //@Autowired
+    public Employee(Address address) {
+        this.address=address;
     }
 
     // Getters & Setters
@@ -54,7 +62,8 @@ public class Employee {
         return address;
     }
 
-    @Autowired
+    // Setter Injection
+    //@Autowired
     public void setAddress(Address address) {
         this.address = address;
     }

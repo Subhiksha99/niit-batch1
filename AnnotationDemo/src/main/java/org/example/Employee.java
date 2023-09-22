@@ -16,13 +16,19 @@ public class Employee {
     // constructors
     public Employee() {}
 
-//
-//    public Employee(int empId, String empName, String contactNo, Address address) {
-//        this.empId = empId;
-//        this.empName = empName;
-//        this.contactNo = contactNo;
-//        this.address = address;
-//    }
+
+    public Employee(int empId, String empName, String contactNo, Address address) {
+        this.empId = empId;
+        this.empName = empName;
+        this.contactNo = contactNo;
+        this.address = address;
+    }
+
+    // Constructor injection
+    //@Autowired
+    public Employee(Address address) {
+        this.address = address;
+    }
 
     // Getters & Setters
 
@@ -54,6 +60,7 @@ public class Employee {
         return address;
     }
 
+    // Setter Injection
     @Autowired
     public void setAddress(Address address) {
         this.address = address;

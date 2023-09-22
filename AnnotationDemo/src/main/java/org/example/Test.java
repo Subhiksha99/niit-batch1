@@ -15,7 +15,23 @@ public class Test {
 
         // get bean from container
         Employee e1= context.getBean("employee", Employee.class);
+        Address addr1 = context.getBean("address", Address.class);
+
         System.out.println(e1);
+
+        e1.setEmpId(1000);
+        e1.setEmpName("Ram");
+        e1.setContactNo("9999912345");
+
+        addr1.setAddrId(3000);
+        addr1.setdNo("123B");
+        addr1.setCity("Chennai");
+
+        e1.setAddress(addr1);
+
+        System.out.println(e1);
+
+        System.out.println(e1.getContactNo());
 
 
     }

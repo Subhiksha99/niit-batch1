@@ -59,4 +59,23 @@ public class CustomerServiceImpl implements ICustomerService{
         }
         return null;
     }
+
+    @Override
+    public Customer getCustomerByName(String name) {
+        System.out.println(name);
+        Customer c= custRepo.findByName(name);
+        System.out.println("#########"+c);
+        return c;
+    }
+
+    @Override
+    public Customer getCustomerByEmail(String email) {
+        return custRepo.findByEmail(email);
+
+    }
+
+    @Override
+    public Customer getCustomerByContactNo(String cNo) {
+        return custRepo.getCustomerByContactNo(cNo);
+    }
 }

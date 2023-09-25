@@ -48,4 +48,21 @@ public class CustomerController {
     public Customer updateCustomerContactNo(@RequestBody String contactNo, @PathVariable("id") int custId)  {
         return customerService.updateCustomerContactNo(custId, contactNo);
     }
+
+    // Get - customer by name
+    @GetMapping("/customer/byName/{cName}")
+    public Customer getCustomerByName(@PathVariable("cName") String name) {
+        return customerService.getCustomerByName(name);
+    }
+
+    // Get - customer by name
+    @GetMapping("/customer/byEmail/{email}")
+    public Customer getCustomerByEmail(@PathVariable("email") String email) {
+        return customerService.getCustomerByEmail(email);
+    }
+
+    @GetMapping("/customer/byCNo/{cNo}")
+    public Customer getCustomerByContactNo(@PathVariable("cNo") String no) {
+        return customerService.getCustomerByContactNo(no);
+    }
 }

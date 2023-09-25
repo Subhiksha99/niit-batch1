@@ -14,4 +14,9 @@ public interface ICustomerService {
     void deleteCustomerById(int custId);
 
     Customer updateCustomerContactNo(int custId, String contactNo);
+
+    Customer getCustomerByName(String name);
+
+    Customer getCustomerByEmail(String email);
+    Customer getCustomerByContactNo(String cNo);
 }

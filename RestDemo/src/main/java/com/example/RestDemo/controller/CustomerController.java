@@ -1,6 +1,7 @@
 package com.example.RestDemo.controller;
 
 import com.example.RestDemo.entity.Customer;
+import com.example.RestDemo.exception.CustomerNotFoundException;
 import com.example.RestDemo.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class CustomerController {
 
     // GET - specific customer
     @GetMapping("/customer/{id}")
-    public Customer getCustomerById(@PathVariable("id") int custId) {
+    public Customer getCustomerById(@PathVariable("id") int custId)  throws CustomerNotFoundException {
         return  customerService.getCustomerById(custId);
     }
 
@@ -39,13 +40,13 @@ public class CustomerController {
 
     // PUT - update more than one property
     @PutMapping("/customer/update")
-    public Customer updateCustomer(@RequestBody Customer customer)  {
+    public Customer updateCustomer(@RequestBody Customer customer) throws CustomerNotFoundException {
         return customerService.updateCustomer(customer);
     }
 
     // PATCH - update specific property
     @PatchMapping ("/customer/update/{id}")
-    public Customer updateCustomerContactNo(@RequestBody String contactNo, @PathVariable("id") int custId)  {
+    public Customer updateCustomerContactNo(@RequestBody String contactNo, @PathVariable("id") int custId) throws CustomerNotFoundException  {
         return customerService.updateCustomerContactNo(custId, contactNo);
     }
 

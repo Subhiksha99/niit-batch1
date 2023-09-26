@@ -1,6 +1,8 @@
 package com.example.RestDemo.service;
 
 import com.example.RestDemo.entity.Customer;
+import com.example.RestDemo.exception.CustomerNotFoundException;
+
 import com.example.RestDemo.repository.ICustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,17 +27,21 @@ public class CustomerServiceImpl implements ICustomerService{
     }
 
     @Override
-    public Customer getCustomerById(int custId) {
-        return custRepo.findById(custId).get();
+    public Customer getCustomerById(int custId) throws CustomerNotFoundException{
+        Optional<Customer> opt = custRepo.findById(custId);
+        if(opt.isPresent()) {
+            return opt.get();
+        }
+        throw new CustomerNotFoundException("Customer not found with id: "+custId);
     }
 
     @Override
-    public Customer updateCustomer(Customer customer) {
+    public Customer updateCustomer(Customer customer) throws CustomerNotFoundException {
         Optional<Customer> optionalObj = custRepo.findById(customer.getCId());
         if(optionalObj.isPresent()) {
             return custRepo.save(customer);
         }
-        return null;
+        throw new CustomerNotFoundException("Customer not found with name: "+customer.getName());
     }
 
     @Override
@@ -47,7 +53,7 @@ public class CustomerServiceImpl implements ICustomerService{
     }
 
     @Override
-    public Customer updateCustomerContactNo(int custId, String contactNo) {
+    public Customer updateCustomerContactNo(int custId, String contactNo) throws CustomerNotFoundException {
         // verify customer is present in db.
         Optional<Customer> optionalObj = custRepo.findById(custId);
         if(optionalObj.isPresent()) {
@@ -58,6 +64,7 @@ public class CustomerServiceImpl implements ICustomerService{
            return custRepo.save(customer);
         }
         return null;
+        //return throw new CustomerNotFoundException("Customer Not Found with id: "+ custId);
     }
 
     @Override
@@ -76,6 +83,8 @@ public class CustomerServiceImpl implements ICustomerService{
 
     @Override
     public Customer getCustomerByContactNo(String cNo) {
+        //Customer c = custRepo.getCustomerByContactNo(cNo);
+
         return custRepo.getCustomerByContactNo(cNo);
     }
 }

@@ -39,6 +39,7 @@ public class CustomerDao {
    */
 
     public int updateCustomer(Customer c) {
+        System.out.println("######c: "+c);
         String query="update customer set id='"+c.getId()+"', name='"+c.getName()+"',contact_no='"+c.getContactNo()+"',email='"+c.getEmail()+"' where id='"+c.getId()+"'";
         return jdbcTemplate.update(query);
     }

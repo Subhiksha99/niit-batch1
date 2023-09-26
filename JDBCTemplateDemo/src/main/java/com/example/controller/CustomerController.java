@@ -24,6 +24,7 @@ public class CustomerController {
         // SAVE
         @PostMapping("/customer/add")
         public int saveCustomer(@RequestBody Customer c) {
+            System.out.println("######controller-c"+c);
             return custDao.saveCustomer(c);
         }
 

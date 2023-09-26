@@ -1,5 +1,6 @@
 package com.example.RestDemo.service;
 
+import com.example.RestDemo.dto.CustomerDto;
 import com.example.RestDemo.entity.Customer;
 import com.example.RestDemo.exception.CustomerNotFoundException;
 
@@ -86,5 +87,20 @@ public class CustomerServiceImpl implements ICustomerService{
         //Customer c = custRepo.getCustomerByContactNo(cNo);
 
         return custRepo.getCustomerByContactNo(cNo);
+    }
+
+    @Override
+    public CustomerDto getCustomerByNameDto(String name) {
+        Customer customer= custRepo.findByName(name);
+        // Create DTO object
+        CustomerDto cDto = new CustomerDto();
+
+        // Update DTO object with customer values
+        cDto.setName(customer.getName());
+        cDto.setEmail(customer.getEmail());
+        cDto.setContactNo(customer.getContactNo());
+
+        // return dto obj as response
+        return cDto;
     }
 }

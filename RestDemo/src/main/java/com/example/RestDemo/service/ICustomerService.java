@@ -1,5 +1,6 @@
 package com.example.RestDemo.service;
 
+import com.example.RestDemo.dto.CustomerDto;
 import com.example.RestDemo.entity.Customer;
 import com.example.RestDemo.exception.CustomerNotFoundException;
 
@@ -20,4 +21,6 @@ public interface ICustomerService {
 
     Customer getCustomerByEmail(String email);
     Customer getCustomerByContactNo(String cNo);
+
+    CustomerDto getCustomerByNameDto(String name);
 }

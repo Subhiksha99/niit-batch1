@@ -1,9 +1,12 @@
 package com.example.RestDemo.controller;
 
+import com.example.RestDemo.dto.CustomerDto;
 import com.example.RestDemo.entity.Customer;
 import com.example.RestDemo.exception.CustomerNotFoundException;
 import com.example.RestDemo.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -65,5 +68,11 @@ public class CustomerController {
     @GetMapping("/customer/byCNo/{cNo}")
     public Customer getCustomerByContactNo(@PathVariable("cNo") String no) {
         return customerService.getCustomerByContactNo(no);
+    }
+
+    @GetMapping("/customer/dto/byName/{name}")
+    public ResponseEntity<CustomerDto> getCustomerByNameDto(String name) {
+        CustomerDto cDto = customerService.getCustomerByNameDto(name);
+        return new ResponseEntity<>(cDto, HttpStatus.OK); // 200 Ok
     }
 }
